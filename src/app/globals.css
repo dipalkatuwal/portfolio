@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=VT323&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Share+Tech+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --font-courier: 'Courier Prime', 'Courier New', monospace;
+  --font-share-tech: 'Share Tech Mono', monospace;
+  --font-vt323: 'VT323', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #ffffff;
+  color: #1c1c1c;
+  font-family: 'Courier Prime', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  color: #1a6b9a;
+  text-decoration: underline;
+}
+a:visited { color: #5a5a5a; }
+a:hover { color: #1c1c1c; }
+
+::-webkit-scrollbar { width: 3px; background: #eeebe4; }
+::-webkit-scrollbar-thumb { background: #c8c4bc; }
+::selection { background: #d0e8f4; color: #1a6b9a; }
+
+/* Scroll reveal */
+.rv {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1);
+}
+.rv.in {
+  opacity: 1;
+  transform: none;
+}
+.rv-1 { transition-delay: 0.06s; }
+.rv-2 { transition-delay: 0.12s; }
+.rv-3 { transition-delay: 0.18s; }
+.rv-4 { transition-delay: 0.25s; }
+
+/* Animations */
+@keyframes availPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(74,222,128,.55); }
+  70%  { box-shadow: 0 0 0 8px rgba(74,222,128,0); }
+  100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+.avail-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  animation: availPulse 2.5s ease infinite;
+  flex-shrink: 0;
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Project card backgrounds */
+.bg-nepse {
+  background: linear-gradient(135deg, #0f3f5e 0%, #1a6b9a 60%, #2b8fcc 100%);
+  position: relative;
+}
+.bg-nepse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0, rgba(255,255,255,.04) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.04) 0, rgba(255,255,255,.04) 1px, transparent 1px, transparent 20px);
+}
+
+.bg-pasal {
+  background: linear-gradient(135deg, #1c1c1c 0%, #3a3a3a 60%, #5a5a5a 100%);
+  position: relative;
+}
+.bg-pasal::after {
+  content: '◆ ◇ ◆ ◇ ◆ ◇';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'VT323', monospace;
+  font-size: 28px;
+  color: rgba(255,255,255,.07);
+  letter-spacing: 8px;
+}
+
+.bg-prediction {
+  background: linear-gradient(135deg, #2a1a0e 0%, #6b4226 60%, #9a6b4a 100%);
+  position: relative;
+}
+.bg-prediction::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(45deg, rgba(255,255,255,.03) 0, rgba(255,255,255,.03) 1px, transparent 1px, transparent 16px);
+}
+
+.bg-nextjs {
+  background: linear-gradient(135deg, #1a3a4a 0%, #1a6b9a 100%);
+}
+
+.bg-portfolio {
+  background: linear-gradient(135deg, #2e2a26 0%, #1c1c1c 100%);
+}
