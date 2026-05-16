@@ -44,7 +44,7 @@ export default function HeroSection() {
       <div className="max-w-[1040px] mx-auto px-6 py-20 relative">
         <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 md:gap-12 items-start animate-fade-up">
           <div>
-            <div className="relative mb-5">
+            <div className="relative mb-8 w-48 mx-auto md:w-full md:mx-0">
               <div className="w-full overflow-hidden aspect-square rounded-[28px] border border-lines bg-white shadow-[0_20px_45px_rgba(15,23,42,.07)]">
                 <Image
                   src={dipalImage}
@@ -90,16 +90,16 @@ export default function HeroSection() {
             </div>
 
             <p className="mb-5 border-l-4 border-lines pl-4 text-[22px] md:text-[24px] font-semibold leading-[1.4] text-ink max-w-[700px]">
-              Building fast, data-heavy web products for the Nepali market — Full-stack applications, AI-powered interfaces, and systems that actually make sense to use.
-            </p>
+              Hi, I'm Dipal Katuwal a full-stack developer focusing end-to-end web applications, ML-powered tools, and GenAI-integrated workflows.           </p>
 
             <div className="space-y-4 text-[14px] leading-[1.9] text-mid">
               <p>
-                Hi, I&apos;m Dipal Katuwal — a full-stack developer focused on <span className="text-accent font-semibold">MERN applications</span>, AI integrations, and data-heavy interfaces built for the Nepali market.
-              </p>
-              <p>
+                Proficient in JavaScript and Python across the full stack, with a strong focus on clean architecture and rapid iteration
+                using modern AI tooling. Known for taking full ownership of features, collaborating effectively across teams, and
+                consistently delivering under tight timelines.              </p>
+              {/* <p>
                 I&apos;ve shipped products like <span className="text-accent font-semibold">NepseSage</span> — a conversational AI platform making Nepal&apos;s stock market legible for retail investors — and <span className="text-accent font-semibold">PasalBot</span>, a commerce system where you order entirely through natural language.
-              </p>
+              </p> */}
               <p>Outside of shipping code, I go deep on systems design, mathematics, and obsessing over how complex tools can be made simpler.</p>
             </div>
 
@@ -117,12 +117,12 @@ export default function HeroSection() {
               >
                 {copied ? (
                   <>
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12" /></svg>
                     Copied!
                   </>
                 ) : (
                   <>
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>
                     Copy
                   </>
                 )}

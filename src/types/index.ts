@@ -1,15 +1,27 @@
 export interface Project {
   key: string;
+  slug: string;
   title: string;
   sub: string;
   desc: string;
   details: string[];
   tags: string[];
   github?: string;
+  liveDemo?: string;
+  isLiveDemo: boolean;
   bgClass: string;
   badge?: string;
   visLabel: string;
   yourehere?: boolean;
+
+  // Case Study Fields
+  overview?: string;
+  problemSolved?: string;
+  features?: { title: string; description: string }[];
+  architecture?: string;
+  designSystem?: string;
+  languages?: { name: string; percentage: number; color: string }[];
+  archTags?: string[];
 }
 
 export interface SkillTag {

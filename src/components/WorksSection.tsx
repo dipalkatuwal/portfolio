@@ -61,7 +61,7 @@ export default function WorksSection() {
               <div className="mb-1 font-mono text-[11px] text-accent">{EDUCATION.institution}</div>
               <div className="mb-4 font-mono text-[10px] text-ink3">{EDUCATION.years}</div>
 
-              <div className="mb-2 font-mono text-[9px] uppercase tracking-[.12em] text-ink3">Technical Core</div>
+              <div className="mb-2 font-mono text-[9px] uppercase tracking-[.12em] text-ink3">Relevant Coursework</div>
               <div className="mb-4 flex flex-wrap gap-1.5">
                 {EDUCATION.core.map((tag) => (
                   <span key={tag} className="rounded-[6px] border border-rule bg-white px-2.5 py-1 text-[10px] font-mono text-ink3 hover:bg-lines/30 hover:border-rule">
