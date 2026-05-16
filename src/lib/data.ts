@@ -252,8 +252,8 @@ export const EXPERIENCE = [
 ];
 
 export const EDUCATION = {
-  degree: "B.Sc. Computer Science & IT",
-  institution: "Tribhuvan University, Kathmandu",
+  degree: "B.Sc. in Computer Science and Information Technology (B.Sc. CSIT)",
+  institution: "Mahendra Morang Adarsha Multiple Campus,TU,Biratnagar,Nepal",
   years: "2021 – 2026",
   core: ["Distributed Computing", "Data Structure & Algorithms", "Artificial Intelligence", "Databases", "OS", "Networking", "Software Engineering"],
   note: "Deep study of foundational CS principles. Built final-year projects merging academic theory with real-world product thinking, specifically in the FinTech space.",
