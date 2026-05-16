@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { PROJECTS } from "@/lib/data";
-import ProjectCard from "./ProjectCard";
+import ProjectCard from "../ui/ProjectCard";
 
 export default function ProjectsSection() {
   const ref = useRef<HTMLElement>(null);

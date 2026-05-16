@@ -9,6 +9,12 @@ const GitHubIcon = () => (
   </svg>
 );
 
+const ExternalLinkIcon = () => (
+  <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor">
+    <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+  </svg>
+);
+
 interface ProjectCardProps {
   project: Project;
   index: number;
@@ -20,7 +26,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className={`group flex flex-col overflow-hidden rounded-[14px] border border-rule bg-white shadow-none transition-all duration-300 hover:-translate-y-[5px] hover:shadow-[0_18px_44px_rgba(28,28,28,.08)] ${
+      className={`group flex flex-col overflow-hidden rounded-[14px] border border-rule bg-white shadow-none transition-all duration-300 hover:-translate-y-[5px] hover:no-underline hover:shadow-[0_18px_44px_rgba(28,28,28,.08)] ${
         isLarge ? "col-span-full" : ""
       }`}
     >
@@ -52,7 +58,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           View details →
         </span>
         <div className="flex items-center gap-1.5">
-          {project.badge && (
+          {project.badge && !(project.badge.toLowerCase().includes("live demo") && !project.isLiveDemo) && (
             <span className="rounded-[6px] border border-lines bg-white px-2.5 py-1 text-[10px] font-mono text-muted hover:bg-lines/30 hover:border-rule">
               {project.badge}
             </span>
@@ -64,9 +70,21 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 e.stopPropagation();
                 window.open(project.github, "_blank", "noopener,noreferrer");
               }}
-              className="rounded-[6px] border border-lines bg-white px-2.5 py-1 text-[10px] font-mono text-muted transition-all duration-150 hover:border-accent hover:text-accent hover:bg-accent/5"
+              className="flex items-center gap-1.5 rounded-[6px] border border-lines bg-white px-2.5 py-1 text-[10px] font-mono text-muted transition-all duration-150 hover:border-accent hover:text-accent hover:bg-accent/5"
             >
-              <GitHubIcon /> GitHub
+              <GitHubIcon /> Source
+            </div>
+          )}
+          {project.isLiveDemo && project.liveDemo && (
+            <div
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                window.open(project.liveDemo, "_blank", "noopener,noreferrer");
+              }}
+              className="flex items-center gap-1.5 rounded-[6px] bg-accent px-2.5 py-1 text-[10px] font-mono text-white transition-all duration-150 hover:bg-accent/90 shadow-sm"
+            >
+              <ExternalLinkIcon /> Live
             </div>
           )}
         </div>

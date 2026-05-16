@@ -32,7 +32,7 @@ body {
 
 a {
   color: #1a6b9a;
-  text-decoration: underline;
+  text-decoration: none;
 }
 a:visited { color: #5a5a5a; }
 a:hover { color: #1c1c1c; }

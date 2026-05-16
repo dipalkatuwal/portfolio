@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
 import dipalImage from "@/assets/dipal.jpg";
 
@@ -27,17 +24,20 @@ const socialLinks = [
     handle: "@dipalkatuwal",
     external: true,
   },
+  {
+    href: "/resume.pdf",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" />
+      </svg>
+    ),
+    name: "Resume",
+    handle: "Download PDF",
+    external: true,
+  },
 ];
 
 export default function HeroSection() {
-  const [copied, setCopied] = useState(false);
-
-  const copyEmail = () => {
-    navigator.clipboard.writeText("dipalkatuwal07@gmail.com").then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
-  };
 
   return (
     <section id="hero-profile" className="relative overflow-hidden border-b border-rule bg-white">
@@ -55,27 +55,28 @@ export default function HeroSection() {
                   className="w-full h-full object-cover object-top grayscale-[20%] contrast-[.95] transition duration-300"
                 />
               </div>
-              <div className="absolute -top-1 -left-1 w-4.5 h-4.5 border-t-2 border-l-2 border-accent rounded-tl-sm" />
-              <div className="absolute bottom-3.5 -right-1 w-4.5 h-4.5 border-b-2 border-r-2 border-accent rounded-br-sm" />
               <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 whitespace-nowrap bottom-[-14px] rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1 text-emerald-700 shadow-[0_20px_45px_rgba(74,222,128,.08)]">
                 <div className="h-2 w-2 rounded-full bg-emerald-500" />
                 <span className="font-mono text-[10px] uppercase tracking-[.12em]">Open to work</span>
               </div>
             </div>
 
-            <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-1">
+            <div className="mt-4 flex flex-row gap-2 md:grid md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 gap-y-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
                   href={social.href}
                   target={social.external ? "_blank" : undefined}
                   rel={social.external ? "noopener noreferrer" : undefined}
-                  className="group flex items-center gap-3 rounded-[18px] border border-lines bg-white px-4 py-3 no-underline transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(15,23,42,.08)]"
+                  className="group flex flex-1 items-center justify-center md:justify-start gap-3 rounded-[15px] md:rounded-[18px] border border-lines bg-white p-3 md:px-4 md:py-3 no-underline transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(15,23,42,.08)]"
+                  title={social.name}
                 >
-                  {social.icon}
-                  <div className="flex-1 text-left">
-                    <div className="text-sm text-ink font-semibold">{social.name}</div>
-                    <div className="text-xs text-muted">{social.handle}</div>
+                  <div className="flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
+                    {social.icon}
+                  </div>
+                  <div className="hidden md:block flex-1 text-left">
+                    <div className="text-[13px] text-ink font-semibold leading-tight">{social.name}</div>
+                    <div className="text-[10px] text-muted truncate">{social.handle}</div>
                   </div>
                 </a>
               ))}
@@ -97,44 +98,10 @@ export default function HeroSection() {
                 Proficient in JavaScript and Python across the full stack, with a strong focus on clean architecture and rapid iteration
                 using modern AI tooling. Known for taking full ownership of features, collaborating effectively across teams, and
                 consistently delivering under tight timelines.              </p>
-              {/* <p>
-                I&apos;ve shipped products like <span className="text-accent font-semibold">NepseSage</span> — a conversational AI platform making Nepal&apos;s stock market legible for retail investors — and <span className="text-accent font-semibold">PasalBot</span>, a commerce system where you order entirely through natural language.
-              </p> */}
-              <p>Outside of shipping code, I go deep on systems design, mathematics, and obsessing over how complex tools can be made simpler.</p>
+              <p>My interest lies on video editing, systems design, machine learning and obsessing over how complex tools can be made simpler.</p>
+              <p>When I'm not at my desk, you'll likely find me hunting down a solid cup of coffee, out on a long walk, planning my next adventure, or unwinding with some anime.</p>
             </div>
 
-            <div className="mt-6 text-[13px] text-mid">
-              Let&apos;s connect <span className="text-muted">and build something meaningful together or just a good conversation about tech.</span>
-            </div>
-
-            <div className="mt-8 flex flex-col gap-3.5 border-t border-lines pt-6 sm:flex-row sm:items-center sm:flex-wrap">
-              <span className="font-mono text-[10px] uppercase tracking-[.1em] text-muted">Reach me →</span>
-              <span className="font-mono text-[12px] text-ink3">dipalkatuwal07@gmail.com</span>
-
-              <button
-                onClick={copyEmail}
-                className={`inline-flex items-center gap-2 rounded-[10px] border px-4 py-2 text-[11px] uppercase tracking-[.06em] font-mono transition duration-150 ${copied ? "border-accent text-accent bg-emerald-50" : "border border-slate-300 bg-white text-ink hover:bg-slate-50"}`}
-              >
-                {copied ? (
-                  <>
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12" /></svg>
-                    Copied!
-                  </>
-                ) : (
-                  <>
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>
-                    Copy
-                  </>
-                )}
-              </button>
-
-              <a
-                href="mailto:dipalkatuwal07@gmail.com"
-                className="inline-flex items-center gap-1.5 rounded-[10px] bg-ink px-5 py-2.5 text-[12px] uppercase tracking-[.06em] text-white transition hover:bg-accent"
-              >
-                Send a Message
-              </a>
-            </div>
           </div>
         </div>
       </div>

@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import { PROJECTS } from "@/lib/data";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import CaseStudyContent from "@/components/CaseStudyContent";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import CaseStudyContent from "@/components/features/CaseStudyContent";
 import { Metadata } from "next";
 
 interface ProjectPageProps {
