@@ -49,7 +49,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(15,23,42,0.01)_0%,transparent_70%)]" />
       </div>
 
-      {/* Main Content Area — Mirrored exact width boundary and internal grid padding */}
+      {/* Main Content Area */}
       <div className="max-w-[1040px] w-full mx-auto px-6 flex-grow flex items-center z-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-8 lg:gap-12 w-full items-center">
 
@@ -70,11 +70,15 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Badge Layout */}
+            {/* Badge + Availability Layout */}
             <div className="flex flex-col items-center lg:items-start space-y-3 w-full">
-              <div>
+              <div className="flex items-center gap-3 flex-wrap justify-center lg:justify-start">
                 <span className="inline-flex rounded border border-[rgba(26,107,154,0.15)] bg-[rgba(26,107,154,0.03)] px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-[.18em] text-accent font-semibold">
                   Full Stack Developer
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded border border-[rgba(74,222,128,0.25)] bg-[rgba(74,222,128,0.04)] px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-[.12em] text-emerald-600 font-semibold">
+                  <span className="avail-dot" style={{ width: 6, height: 6 }} />
+                  Available
                 </span>
               </div>
 
@@ -99,7 +103,7 @@ export default function HeroSection() {
             {/* Title Block */}
             <div className="space-y-3.5 pt-0.5">
               <h1 className="text-[32px] sm:text-[40px] md:text-[48px] font-bold tracking-tight text-ink leading-[1.14]">
-                Hello, I'm <span className="text-ink">Dipal Katuwal</span>
+                Hello, I&apos;m <span className="text-ink">Dipal Katuwal</span>
               </h1>
               <p className="text-[14px] md:text-[15px] text-mid leading-[1.68] font-normal">
                 A computer science fellow and full-stack developer dedicated to end-to-end web applications, ML-powered tools, and GenAI-integrated workflows.
@@ -142,7 +146,7 @@ export default function HeroSection() {
                   width={145}
                   height={145}
                   priority
-                  className="w-full h-full object-cover object-top transition duration-500 group-hover:scale-102"
+                  className="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105"
                 />
               </div>
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-accent/80" />
@@ -152,7 +156,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Summary Profile Dashboard Block — Matched Grid Blueprint */}
+      {/* Summary Profile Dashboard Block */}
       <div className="w-full max-w-[1040px] mx-auto px-6 mt-10 lg:mt-2 relative z-20">
         <div className="w-full bg-white border border-lines rounded-xl p-6 md:p-8 shadow-[0_12px_30px_rgba(15,23,42,0.02)] relative overflow-hidden group">
           <div className="flex flex-col items-center text-center max-w-[800px] mx-auto space-y-4">
@@ -169,28 +173,27 @@ export default function HeroSection() {
               Taking ownership of feature lifecycles, collaborating across layers, and engineering clean, modular software systems.
             </h3>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 pt-4 text-left w-full border-t border-lines/80 text-[12.5px] leading-relaxed text-mid">
-              <p className="bg-neutral-50/30 p-3.5 rounded-lg border border-lines/40 md:bg-transparent md:border-none md:p-0">
-               I'm skilled in systems design, robust backend architectures, database optimization, and simplifying complex software.
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-8 pt-4 w-full border-t border-lines/80 text-[12.5px] leading-relaxed text-mid">
+              <p className="text-center md:text-left animate-fade-up [animation-delay:0.15s] opacity-0 [animation-fill-mode:forwards] bg-neutral-50/40 p-3.5 rounded-lg border border-lines/40 md:bg-transparent md:border-none md:p-0">
+                I&apos;m skilled in systems design, robust backend architectures, database optimization, and simplifying complex software.
               </p>
-              <p className="bg-neutral-50/30 p-3.5 rounded-lg border border-lines/40 md:bg-transparent md:border-none md:p-0">
-                When not coding, I'm usually hunting down a solid cup of tea, out on a long walk, or editing videos.
+              <p className="text-center md:text-left animate-fade-up [animation-delay:0.28s] opacity-0 [animation-fill-mode:forwards] bg-neutral-50/40 p-3.5 rounded-lg border border-lines/40 md:bg-transparent md:border-none md:p-0">
+                When not coding, I&apos;m usually hunting down a solid cup of tea, out on a long walk, or editing videos.
               </p>
             </div>
 
-  
-<div className="pt-2 w-full flex justify-center">
-  <a
-    href="/#projects"
-    className="inline-flex items-center justify-center gap-2 w-max px-5 py-2.5 bg-accent text-white rounded-lg text-[11px] font-mono font-bold tracking-wider hover:bg-accent/95 active:scale-[0.98] transition-all"
-    style={{ color: "#ffffff" }}
-  >
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="2" y="3" width="20" height="14" rx="2" /><polyline points="8 21 12 17 16 21" /><line x1="12" y1="17" x2="12" y2="21" />
-    </svg>
-    VIEW PROJECTS
-  </a>
-</div>
+            <div className="pt-2 w-full flex justify-center">
+              <a
+                href="/#projects"
+                className="inline-flex items-center justify-center gap-2 w-max px-5 py-2.5 bg-accent text-white rounded-lg text-[11px] font-mono font-bold tracking-wider hover:bg-accent/95 active:scale-[0.98] transition-all"
+                style={{ color: "#ffffff" }}
+              >
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" /><polyline points="8 21 12 17 16 21" /><line x1="12" y1="17" x2="12" y2="21" />
+                </svg>
+                VIEW PROJECTS
+              </a>
+            </div>
 
           </div>
         </div>

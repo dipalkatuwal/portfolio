@@ -28,6 +28,10 @@ const config: Config = {
         mono: ["var(--font-share-tech)", "'Courier New'", "monospace"],
         vt323: ["var(--font-vt323)", "monospace"],
       },
+      scale: {
+        "102": "1.02",
+        "103": "1.03",
+      },
       animation: {
         "avail-pulse": "availPulse 2.5s ease infinite",
         "fade-up": "fadeUp 0.6s cubic-bezier(.22,1,.36,1) forwards",

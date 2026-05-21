@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=VT323&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Share+Tech+Mono&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -24,7 +22,7 @@ html {
 body {
   background-color: #ffffff;
   color: #1c1c1c;
-  font-family: 'Courier Prime', 'Courier New', monospace;
+  font-family: var(--font-share-tech), 'Courier New', monospace;
   font-size: 14px;
   line-height: 1.6;
   overflow-x: hidden;
@@ -34,7 +32,10 @@ a {
   color: #1a6b9a;
   text-decoration: none;
 }
-a:visited { color: #5a5a5a; }
+
+/* Scoped to prose/body text only — avoids bleeding into nav/cards */
+.prose-links a:visited { color: #5a5a5a; }
+
 a:hover { color: #1c1c1c; }
 
 ::-webkit-scrollbar { width: 3px; background: #eeebe4; }
@@ -55,6 +56,7 @@ a:hover { color: #1c1c1c; }
 .rv-2 { transition-delay: 0.12s; }
 .rv-3 { transition-delay: 0.18s; }
 .rv-4 { transition-delay: 0.25s; }
+.rv-5 { transition-delay: 0.32s; }
 
 /* Animations */
 @keyframes availPulse {
@@ -111,7 +113,7 @@ a:hover { color: #1c1c1c; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'VT323', monospace;
+  font-family: var(--font-vt323), monospace;
   font-size: 28px;
   color: rgba(255,255,255,.07);
   letter-spacing: 8px;

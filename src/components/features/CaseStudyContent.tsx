@@ -1,8 +1,8 @@
 "use client";
 
 import { Project } from "@/types";
-import { useEffect, useRef } from "react";
 import Link from "next/link";
+import { useScrollReveal } from "@/lib/useScrollReveal";
 
 const GitHubIcon = () => (
   <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
@@ -12,32 +12,16 @@ const GitHubIcon = () => (
 
 const ExternalLinkIcon = () => (
   <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
-    <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" /><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+    <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+    <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
   </svg>
 );
 
 export default function CaseStudyContent({ project }: { project: Project }) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!ref.current) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("in");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { rootMargin: "-40px 0px" }
-    );
-    ref.current.querySelectorAll(".rv").forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+  const ref = useScrollReveal("-40px 0px");
 
   return (
-    <div ref={ref} className="mx-auto max-w-[1100px] px-6">
+    <div ref={ref as any} className="mx-auto max-w-[1100px] px-6">
       {/* Breadcrumbs */}
       <nav className="rv flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted mb-12">
         <Link href="/" className="hover:text-accent transition-colors">Home</Link>
@@ -62,7 +46,22 @@ export default function CaseStudyContent({ project }: { project: Project }) {
             </p>
           </div>
 
-          <div className="rv rv-2 space-y-2">
+          {/* TL;DR */}
+          {project.details && project.details.length > 0 && (
+            <div className="rv rv-2">
+              <p className="font-mono text-[10px] tracking-widest text-muted uppercase mb-3">TL;DR</p>
+              <ul className="space-y-2">
+                {project.details.map((point, i) => (
+                  <li key={i} className="flex items-start gap-2 text-[11px] font-mono text-mid leading-relaxed">
+                    <span className="mt-[3px] text-accent flex-shrink-0">→</span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <div className="rv rv-3 space-y-2">
             <p className="font-mono text-[10px] tracking-widest text-muted uppercase mb-3">Stack</p>
             {project.tags.map((tag) => (
               <div key={tag} className="flex items-center gap-2 text-[11px] font-mono text-mid">
@@ -72,11 +71,12 @@ export default function CaseStudyContent({ project }: { project: Project }) {
             ))}
           </div>
 
-          <div className="rv rv-3 flex flex-col gap-3 pt-4">
+          <div className="rv rv-4 flex flex-col gap-3 pt-4">
             {project.github && (
               <a
                 href={project.github}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2.5 px-4 py-2.5 rounded-lg border border-rule font-mono text-[10px] uppercase tracking-widest text-muted hover:text-ink hover:border-ink3 transition-all"
               >
                 <GitHubIcon /> View Source
@@ -86,6 +86,7 @@ export default function CaseStudyContent({ project }: { project: Project }) {
               <a
                 href={project.liveDemo}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2.5 px-4 py-2.5 rounded-lg bg-accent text-white font-mono text-[10px] uppercase tracking-widest hover:bg-accent/90 transition-all shadow-md"
               >
                 <ExternalLinkIcon /> Live Demo
@@ -94,7 +95,7 @@ export default function CaseStudyContent({ project }: { project: Project }) {
           </div>
 
           {project.languages && (
-            <div className="rv rv-4 pt-6">
+            <div className="rv rv-5 pt-6">
               <p className="font-mono text-[10px] tracking-widest text-muted uppercase mb-4">Languages</p>
               <div className="flex h-1.5 w-full gap-0.5 overflow-hidden rounded-full bg-lines">
                 {project.languages.map((lang) => (

@@ -1,29 +1,12 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { PROJECTS } from "@/lib/data";
 import ProjectCard from "../ui/ProjectCard";
+import { useScrollReveal } from "@/lib/useScrollReveal";
 
 export default function ProjectsSection() {
-  const ref = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    if (!ref.current) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("in");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { rootMargin: "-60px 0px -40px 0px" }
-    );
-    ref.current.querySelectorAll(".rv").forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+  const ref = useScrollReveal();
 
   const featuredProjects = PROJECTS.slice(0, 5);
 
@@ -34,8 +17,8 @@ export default function ProjectsSection() {
           <p className="rv font-mono text-[10px] font-semibold uppercase tracking-[.12em] text-muted">
             Projects
           </p>
-          <Link 
-            href="/projects" 
+          <Link
+            href="/projects"
             className="rv font-mono text-[10px] font-semibold uppercase tracking-[.12em] text-accent hover:underline transition-all"
           >
             See all projects →
@@ -44,7 +27,9 @@ export default function ProjectsSection() {
 
         <div className="mt-11 grid gap-[18px] sm:grid-cols-2">
           {featuredProjects.map((project, i) => (
-            <ProjectCard key={project.key} project={project} index={i} />
+            <div key={project.key} className={`rv rv-${Math.min(i + 1, 5)}`}>
+              <ProjectCard project={project} index={i} />
+            </div>
           ))}
         </div>
       </div>

@@ -8,6 +8,8 @@ const nextConfig = {
       },
     ],
   },
+  // Enables gzip compression on Vercel / Node server
+  compress: true,
 };
 
 module.exports = nextConfig;

@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { SKILLS } from "@/lib/data";
+import { useScrollReveal } from "@/lib/useScrollReveal";
 import {
   Code2, FileCode2, Database, Layout, Activity, Atom, Server, Cpu, Globe,
   Brain, Layers, RefreshCcw, LineChart, Table, Grid3x3, Webhook, Lock,
@@ -45,24 +45,7 @@ const iconMap: Record<string, any> = {
 const tagClass = "text-ink3 border-rule bg-white hover:bg-lines/50 hover:border-ink/20 flex items-center gap-2";
 
 export default function SkillsSection() {
-  const ref = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    if (!ref.current) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("in");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { rootMargin: "-60px 0px -40px 0px" }
-    );
-    ref.current.querySelectorAll(".rv").forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+  const ref = useScrollReveal();
 
   return (
     <section id="skills" className="border-t border-rule" ref={ref}>

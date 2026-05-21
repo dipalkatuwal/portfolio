@@ -1,27 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { EXPERIENCE, EDUCATION } from "@/lib/data";
+import { useScrollReveal } from "@/lib/useScrollReveal";
 
 export default function WorksSection() {
-  const ref = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    if (!ref.current) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("in");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { rootMargin: "-60px 0px -40px 0px" }
-    );
-    ref.current.querySelectorAll(".rv").forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+  const ref = useScrollReveal();
 
   return (
     <section id="works" className="border-t border-rule" ref={ref}>
@@ -39,7 +22,7 @@ export default function WorksSection() {
                     <div className="font-playfair text-[19px] text-ink">{exp.role}</div>
                     <div className="mt-1 font-mono text-[10px] uppercase tracking-[.06em] text-ink3">{exp.company}</div>
                   </div>
-                  <span className="flex-shrink-0 rounded-[5px] border border-rule  px-2.5 py-1 text-[10px] text-ink3">
+                  <span className="flex-shrink-0 rounded-[5px] border border-rule px-2.5 py-1 text-[10px] text-ink3">
                     {exp.year}
                   </span>
                 </div>
@@ -56,7 +39,7 @@ export default function WorksSection() {
           </div>
 
           <div className="rv rv-3">
-            <div className="rounded-[14px] border border-rule border-l-4 border-ink3 bg-white p-6">
+            <div className="rounded-[14px] border border-rule border-l-[4px] border-l-ink3 bg-white p-6">
               <div className="font-playfair text-[18px] text-ink mb-1">{EDUCATION.degree}</div>
               <div className="mb-1 font-mono text-[11px] text-accent">{EDUCATION.institution}</div>
               <div className="mb-4 font-mono text-[10px] text-ink3">{EDUCATION.years}</div>
