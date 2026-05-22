@@ -8,11 +8,10 @@ export default function Navbar() {
 
   // Prevent scrolling when drawer is open
   useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
 
   const navLinks = [
@@ -20,7 +19,7 @@ export default function Navbar() {
     { id: "skills", label: "Skills", href: "/#skills" },
     { id: "projects", label: "Projects", href: "/#projects" },
     { id: "works", label: "Work", href: "/#works" },
-    { id: "contact", label: "Contact", href: "#footer" },
+    { id: "contact", label: "Contact", href: "/#footer" },
   ];
 
   return (

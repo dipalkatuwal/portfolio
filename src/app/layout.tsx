@@ -6,6 +6,7 @@ import {
   VT323,
 } from "next/font/google";
 import "./globals.css";
+import { BASE_URL } from "@/lib/config";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -36,8 +37,6 @@ const vt323 = VT323({
   variable: "--font-vt323",
   display: "optional",
 });
-
-const BASE_URL = "https://dipalkatuwal.com.np";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -114,10 +113,19 @@ export const metadata: Metadata = {
     title: "Dipal Katuwal — Full Stack Developer in Nepal",
     description:
       "Full Stack Developer from Nepal building MERN applications, AI-powered tools, and data-heavy web platforms. Check out NepseSage, PasalBot, and more.",
-    type: "website",
+    type: "profile",
     url: BASE_URL,
     siteName: "Dipal Katuwal",
     locale: "en_US",
+    images: [
+      {
+        url: `${BASE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: "Dipal Katuwal — Full Stack Developer in Nepal",
+        type: "image/png",
+      },
+    ],
   },
 
   twitter: {
@@ -127,12 +135,30 @@ export const metadata: Metadata = {
       "Full Stack Developer from Nepal. MERN · AI Integrations · TypeScript · Next.js",
     creator: "@dipalkatuwal",
     site: "@dipalkatuwal",
+    images: [
+      {
+        url: `${BASE_URL}/og-image.png`,
+        alt: "Dipal Katuwal — Full Stack Developer in Nepal",
+      },
+    ],
   },
 
-  // Verification — add your actual codes here after verifying on each platform
+  // Search engine verification — add your codes from Google Search Console & Bing Webmaster
   verification: {
-    google: "ADD_YOUR_GOOGLE_SEARCH_CONSOLE_CODE_HERE",
-    // yandex: "ADD_IF_NEEDED",
+    google: "ADD_YOUR_GOOGLE_VERIFICATION_CODE_HERE",
+    // other: { "msvalidate.01": "ADD_YOUR_BING_VERIFICATION_CODE_HERE" },
+  },
+
+  // Geo signals help Google understand this is a Nepal-based developer
+  other: {
+    "geo.region": "NP-P1",
+    "geo.placename": "Biratnagar, Nepal",
+    "geo.position": "26.4525;87.2718",
+    ICBM: "26.4525, 87.2718",
+    // Canonical social profiles for entity disambiguation
+    "profile:first_name": "Dipal",
+    "profile:last_name": "Katuwal",
+    "profile:username": "dipalkatuwal",
   },
 
   category: "technology",
@@ -144,32 +170,45 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Person",
+      "@type": ["Person", "ProfilePage"],
       "@id": `${BASE_URL}/#person`,
       name: "Dipal Katuwal",
+      givenName: "Dipal",
+      familyName: "Katuwal",
       url: BASE_URL,
-      image: `${BASE_URL}/dipal-katuwal.jpg`,
+      image: {
+        "@type": "ImageObject",
+        url: `${BASE_URL}/dipal-katuwal.jpg`,
+        width: 800,
+        height: 800,
+        caption: "Dipal Katuwal — Full Stack Developer from Nepal",
+      },
       jobTitle: "Full Stack Developer",
       description:
-        "Full Stack Developer from Nepal specializing in MERN stack, AI integrations, and data-heavy web applications.",
+        "Full Stack Developer from Nepal specializing in MERN stack, AI integrations, and data-heavy web applications. Building tools for the Nepali market.",
       email: "dipalkatuwal07@gmail.com",
-      nationality: "Nepali",
+      nationality: {
+        "@type": "Country",
+        name: "Nepal",
+      },
       alumniOf: {
         "@type": "CollegeOrUniversity",
         name: "Mahendra Morang Adarsha Multiple Campus, Tribhuvan University",
         address: {
           "@type": "PostalAddress",
           addressLocality: "Biratnagar",
+          addressRegion: "Province No. 1",
           addressCountry: "NP",
         },
       },
       address: {
         "@type": "PostalAddress",
+        addressLocality: "Biratnagar",
         addressCountry: "NP",
       },
       sameAs: [
         "https://github.com/dipalkatuwal",
-        "https://linkedin.com/in/dipalkatuwal",
+        "https://www.linkedin.com/in/dipalkatuwal",
         BASE_URL,
       ],
       knowsAbout: [
@@ -185,7 +224,18 @@ const jsonLd = {
         "AI Integrations",
         "MongoDB",
         "PostgreSQL",
+        "Nepal Stock Exchange",
+        "NEPSE",
       ],
+      hasOccupation: {
+        "@type": "Occupation",
+        name: "Full Stack Developer",
+        occupationLocation: {
+          "@type": "Country",
+          name: "Nepal",
+        },
+        skills: "MERN Stack, React, Node.js, Next.js, TypeScript, Python, TensorFlow",
+      },
     },
     {
       "@type": "WebSite",
@@ -196,6 +246,7 @@ const jsonLd = {
       publisher: {
         "@id": `${BASE_URL}/#person`,
       },
+      inLanguage: "en-US",
       potentialAction: {
         "@type": "SearchAction",
         target: {
@@ -204,6 +255,38 @@ const jsonLd = {
         },
         "query-input": "required name=search_term_string",
       },
+    },
+    {
+      "@type": "ItemList",
+      name: "Projects by Dipal Katuwal",
+      description: "Software projects built by Dipal Katuwal, Full Stack Developer from Nepal.",
+      url: `${BASE_URL}/projects`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "NepseSage — NEPSE Stock Market Analysis Platform",
+          description:
+            "Professional-grade AI-driven analysis platform for Nepal Stock Exchange investors. Built with Next.js 15, Express.js, MongoDB, and OpenAI.",
+          url: `${BASE_URL}/projects/nepse-sage`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "PasalBot — Conversational Commerce for Nepali Sellers",
+          description:
+            "NLP-powered chat-driven commerce platform for Nepali social media sellers. Built with MERN stack.",
+          url: `${BASE_URL}/projects/pasal-bot`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "NEPSE Prediction Portal — ML Stock Forecasting",
+          description:
+            "LSTM-based machine learning model for NEPSE stock price prediction using TensorFlow and Python.",
+          url: `${BASE_URL}/projects/nepse-predictor`,
+        },
+      ],
     },
   ],
 };
@@ -219,6 +302,15 @@ export default function RootLayout({
       className={`${playfair.variable} ${courierPrime.variable} ${shareTechMono.variable} ${vt323.variable}`}
     >
       <head>
+        {/* Preconnect to Google Fonts for faster LCP */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+        {/* rel="me" links — help search engines confirm identity across profiles */}
+        <link rel="me" href="https://github.com/dipalkatuwal" />
+        <link rel="me" href="https://www.linkedin.com/in/dipalkatuwal" />
+        <link rel="me" href={`mailto:dipalkatuwal07@gmail.com`} />
+
         {/* JSON-LD structured data for Google Knowledge Panel */}
         <script
           type="application/ld+json"

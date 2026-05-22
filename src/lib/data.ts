@@ -1,38 +1,38 @@
 export const PROJECTS = [
-  {
+   {
     key: "nepse",
     slug: "nepse-sage",
     title: "NepseSage",
-    sub: "MERN · Conversational AI · Real-time Data",
-    desc: "Stock market intelligence for retail investors in Nepal — complex NEPSE data, plain language answers. No jargon, no spreadsheets.",
+    sub: "Next.js 15 · Express.js · MongoDB · OpenAI · Framer Motion",
+    desc: "Professional-grade clinical analysis platform for the Nepal Stock Exchange — institutional-quality portfolio intelligence, AI-driven behavioral insights, and real-time market data for retail investors.",
     details: [
-      "Full MERN platform where retail investors can ask questions about stocks in plain language",
-      "Conversational AI layer on top of market data that translates it — no jargon, no spreadsheets",
-      "Real-time data pipeline handling live market feeds, normalization, and queryability",
-      "UX kept deliberately simple — if someone's never invested before, they should still be able to use it",
+      "Monorepo with Next.js 15 App Router frontend and Express.js/Node.js backend, both in TypeScript",
+      "OpenAI-powered Sage AI for symbol-level technical analysis, support/resistance detection, and NEPSE sentiment aggregation",
+      "Proprietary 'Discipline Score' system with a Behavior Lab that logs emotional state during trades and auto-flags cognitive biases like FOMO and Revenge Trading",
+      "JWT + Bcryptjs authentication, MongoDB (Mongoose 9) persistence, and node-cron background jobs for scheduled market data tasks",
     ],
-    tags: ["MongoDB", "Express.js", "React.js", "Node.js", "Gemini API", "WebSocket", "Chart.js", "JWT Auth"],
-    github: "https://github.com/dipal-katuwal/NepseSage",
-    isLiveDemo: false,
+    tags: ["Next.js 15", "TypeScript", "Express.js", "Node.js", "MongoDB", "OpenAI API", "Framer Motion", "Recharts", "Shadcn UI", "Tailwind CSS 4", "JWT Auth", "Zod"],
+    github: "https://github.com/dipalkatuwal/NepseSage",
+    liveDemo: "https://nepsesage.vercel.app/market",
     bgClass: "bg-nepse",
-    badge: "Live Demo",
+    badge: "Open Source",
     visLabel: "01 / NepseSage",
-    overview: "NepseSage AI is a full-stack, professional-grade market analysis platform purpose-built for Nepal Stock Exchange (NEPSE) investors. Designed around a 'Clinical Analyst' philosophy, it transforms raw market data into high-precision visual intelligence, giving retail investors access to tools previously reserved for institutional traders.",
-    problemSolved: "Nepali retail investors lack access to professional-grade tools for portfolio tracking, behavioral analysis, and AI-driven market insights — forcing them to make high-stakes decisions with inadequate data and no psychological guardrails.",
+    overview: "NepseSage AI is a full-stack, professional-grade market analysis platform purpose-built for Nepal Stock Exchange (NEPSE) investors. Built on a 'Clinical Analyst' philosophy, it combines a Next.js 15 App Router frontend with an Express.js/Node.js backend and MongoDB to deliver institutional-caliber tools — real-time portfolio tracking, AI-powered symbol analysis, behavioral psychology insights, and risk-free strategy simulation — to retail investors who previously had none of this.",
+    problemSolved: "Nepali retail investors are forced to make high-stakes decisions with inadequate data, zero behavioral guardrails, and no professional tooling. NepseSage closes that gap — bringing institutional-grade portfolio analytics, an AI analyst engine, and a dedicated trading psychology layer to anyone with a NEPSE account.",
     features: [
-      { title: "Clinical Dashboard", description: "Real-time portfolio P&L, a proprietary 'Discipline Score' metric, live Portfolio Beta, and volatility ratings — all in one mission-control view." },
-      { title: "Sage AI Engine", description: "OpenAI-powered symbol analysis for stocks like NICA and NTC. Detects support/resistance levels, interprets indicators, and aggregates NEPSE market sentiment." },
-      { title: "Behavior Lab / Journal", description: "The trading psychologist. Logs emotional state during trades, identifies cognitive biases (FOMO, Revenge Trading), and auto-flags 'Red Flag' patterns." },
-      { title: "Strategy Simulator", description: "Risk-free strategy testing environment using real NEPSE market data and virtual capital, enabling investors to validate approaches before committing." }
+      { title: "Clinical Dashboard", description: "Mission control for investors. Tracks real-time portfolio value and P&L, surfaces a proprietary 'Discipline Score', and shows live Portfolio Beta alongside volatility ratings — all in one high-density view." },
+      { title: "Sage AI Engine", description: "OpenAI-powered analytical core at /sage-ai. Performs technical analysis for NEPSE symbols (NICA, NTC, etc.) — detecting support/resistance levels, interpreting indicators, and aggregating market sentiment signals." },
+      { title: "Behavior Lab & Journal", description: "The trading psychologist at /journal. Logs emotional state during every trade, runs automatic pattern recognition to identify FOMO and Revenge Trading behaviors, and auto-flags 'Red Flag' patterns before they become habits." },
+      { title: "Strategy Simulator", description: "Risk-free environment at /simulator for testing strategies with real NEPSE market data and virtual capital — validate approaches before committing real money." }
     ],
-    architecture: "Built as a monorepo with a clean separation between frontend and backend. The Express.js API handles JWT-secured authentication, MongoDB portfolio/journal persistence, and background NEPSE data jobs via node-cron. The Next.js 15 App Router frontend leverages Server Components for optimal performance.",
-    designSystem: "Uses a bespoke 'Clinical Navy' design language — OKLCH-based colors for perfect light/dark transitions, hardware-accelerated micro-animations via Framer Motion, and a dual-typography system pairing Space Grotesk for impact with DM Sans for data-dense readouts.",
+    architecture: "Structured as a monorepo with two isolated workspaces: /server (Express.js, controllers, Mongoose models for User/Portfolio/Journal, JWT middleware, node-cron background jobs, OpenAI service integration) and /web-app (Next.js 15 App Router, Shadcn/Radix UI components, AuthContext, custom hooks, Zod schema validation). The backend exposes REST endpoints consumed by the frontend via NEXT_PUBLIC_API_URL.",
+    designSystem: "Built around a bespoke 'Clinical Navy' design language: OKLCH-based color tokens for mathematically perfect light/dark transitions, hardware-accelerated micro-interactions via Framer Motion, Recharts for financial data visualization, and a dual-typography system using Space Grotesk (headings/impact) paired with DM Sans (data-dense utility readouts). Styled with Tailwind CSS 4.",
     languages: [
       { name: "TypeScript", percentage: 83.6, color: "#9b89e8" },
       { name: "JavaScript", percentage: 14.7, color: "#c8a96e" },
       { name: "CSS", percentage: 1.7, color: "#6ecaa8" }
     ],
-    archTags: ["Monorepo", "REST API", "JWT Auth", "Background Jobs", "Server Components", "Zod Validation", "OKLCH Color System"]
+    archTags: ["Monorepo", "Next.js 15 App Router", "Server Components", "REST API", "JWT + Bcryptjs", "Mongoose ODM", "node-cron Jobs", "OpenAI SDK", "Zod Validation", "OKLCH Color System", "Shadcn UI", "Framer Motion"]
   },
   {
     key: "pasal",
@@ -47,10 +47,10 @@ export const PROJECTS = [
       "Secure JWT authentication and a backend architecture that scales to multiple concurrent shops",
     ],
     tags: ["MongoDB", "Express.js", "React.js", "Node.js", "NLP", "RBAC", "JWT Auth", "Socket.io"],
-    github: "https://github.com/dipal-katuwal/PasalBot",
-    isLiveDemo: false,
+    github: "https://github.com/dipalkatuwal/PasalBot",
+    liveDemo: "https://pasalbot.vercel.app",
     bgClass: "bg-pasal",
-    badge: "Live Demo",
+    
     visLabel: "02 / PasalBot",
     overview: "PasalBot (v1.1) is a smart shop assistant frontend application built specifically for Nepali social media sellers operating on Facebook and Instagram. 'Pasal' means shop in Nepali — the app helps informal vendors manage products, track orders, and automate customer conversations through a keyword-driven chat bot, all from a single dashboard.",
     problemSolved: "Thousands of Nepali entrepreneurs run businesses entirely through social media DMs — manually responding to every inquiry, tracking orders in notebooks, and losing sales to missed messages. PasalBot brings structure and automation to this informal commerce landscape.",
@@ -82,7 +82,7 @@ export const PROJECTS = [
       "Backtesting framework that validates model accuracy against held-out market periods",
     ],
     tags: ["Python", "TensorFlow", "Pandas", "NumPy", "Flask", "Chart.js", "LSTM", "Data Visualization"],
-    github: "https://github.com/dipal-katuwal/nepse-prediction-portal",
+    github: "https://github.com/dipalkatuwal/nepse-prediction-portal",
     isLiveDemo: false,
     bgClass: "bg-prediction",
     visLabel: "03 / NEPSE Prediction",
@@ -104,8 +104,8 @@ export const PROJECTS = [
   },
   {
     key: "nextjs",
-    slug: "nextjs-dashboard",
-    title: "Next.js Learning Portfolio",
+    slug: "sanatho",
+    title: "Sangatho",
     sub: "Next.js · React · Tailwind CSS · App Router",
     desc: "A hands-on exploration of the Next.js ecosystem — App Router, server components, API routes, and modern React patterns.",
     details: [
@@ -115,10 +115,10 @@ export const PROJECTS = [
       "Deployed to Vercel; used as a sandbox to test patterns before bringing them to production",
     ],
     tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "App Router", "Server Components"],
-    github: "https://github.com/dipal-katuwal/Nextjslearning",
-    isLiveDemo: false,
+    github: "https://github.com/dipalkatuwal/Nextjslearning",
+    liveDemo: "https://sangatho.vercel.app",
     bgClass: "bg-nextjs",
-    visLabel: "04 / Next.js Portfolio",
+    visLabel: "04 / Sangatho",
     overview: "A production-quality financial dashboard application built by completing the official Next.js App Router course curriculum. This project demonstrates deep proficiency with Next.js 15's modern patterns.",
     problemSolved: "While labeled a learning project, this codebase is 99.1% TypeScript with strict configuration, auth middleware, database integration, and live deployment — reflecting production-grade technical rigor.",
     features: [
@@ -135,40 +135,7 @@ export const PROJECTS = [
     ],
     archTags: ["Server Components", "Route Middleware", "DB Queries", "Session Management", "Streaming UI", "Vercel Deployment"]
   },
-  {
-    key: "portfolio",
-    slug: "portfolio-site",
-    title: "Portfolio Site",
-    sub: "Next.js · Tailwind CSS · TypeScript · SVG",
-    desc: "The site you're on right now. Built from scratch with a warm editorial aesthetic.",
-    details: [
-      "Custom design system with a warm ink palette — Playfair Display + Courier Prime",
-      "Scroll-reveal animations driven by IntersectionObserver with staggered delays",
-      "Fully accessible navigation with keyboard support and ARIA labels throughout",
-      "Zero external component libraries — every UI element written from scratch",
-    ],
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "SVG", "Animation"],
-    isLiveDemo: false,
-    bgClass: "bg-portfolio",
-    yourehere: true,
-    visLabel: "05 / Portfolio Site",
-    overview: "A bespoke digital garden built to showcase projects and personality. The site emphasizes craftsmanship over convenience, using zero UI libraries and custom-built components.",
-    problemSolved: "Moving away from generic developer portfolios. This site focuses on readability, typography, and subtle animations that reflect an 'editorial' feel.",
-    features: [
-      { title: "Typography First", description: "Harmonious pairing of Playfair Display for headings and Courier Prime for code/data, ensuring high legibility and character." },
-      { title: "Scroll Reveal", description: "Custom IntersectionObserver implementation that triggers animations as elements enter the viewport, creating a guided experience." },
-      { title: "Responsive Canvas", description: "Fluid layouts that adapt from ultra-wide desktops to mobile devices without losing the editorial spacing." },
-      { title: "SVG Mastery", description: "Custom-crafted SVG icons and backgrounds that stay sharp at any resolution while maintaining a small bundle size." }
-    ],
-    architecture: "Built with Next.js App Router for optimal performance and SEO. The codebase follows a strict component-based architecture for maintainability.",
-    designSystem: "The 'Warm Ink' palette (f7f4ef + 1c1c1c) inspired by vintage manuscripts and modern minimalist print design.",
-    languages: [
-      { name: "TypeScript", percentage: 70.0, color: "#1a6b9a" },
-      { name: "Tailwind CSS", percentage: 25.0, color: "#6ecaa8" },
-      { name: "SVG", percentage: 5.0, color: "#c8a96e" }
-    ],
-    archTags: ["Next.js", "App Router", "TypeScript", "Tailwind CSS", "Custom Animation", "SEO Optimized"]
-  },
+ 
 ];
 
 export const SKILLS = [
@@ -232,7 +199,7 @@ export const SKILLS = [
 export const EXPERIENCE = [
   {
     role: "Full Stack Developer",
-    company: "Independent",
+    company: "Self-Employed",
     year: "2023 – Present",
     bullets: [
       "Designed and shipped NepseSage — a full MERN platform combining a real-time NEPSE data pipeline with a conversational AI layer for retail investors",

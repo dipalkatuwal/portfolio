@@ -77,17 +77,17 @@ export default function CaseStudyContent({ project }: { project: Project }) {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 px-4 py-2.5 rounded-lg border border-rule font-mono text-[10px] uppercase tracking-widest text-muted hover:text-ink hover:border-ink3 transition-all"
+                className="flex items-center gap-2.5 px-4 py-2.5 rounded-lg border border-rule font-mono text-[10px] uppercase tracking-widest text-muted hover:text-ink hover:border-ink3 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
               >
                 <GitHubIcon /> View Source
               </a>
             )}
-            {project.isLiveDemo && project.liveDemo && (
+            {project.liveDemo && (
               <a
                 href={project.liveDemo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 px-4 py-2.5 rounded-lg bg-accent text-white font-mono text-[10px] uppercase tracking-widest hover:bg-accent/90 transition-all shadow-md"
+                className="flex items-center gap-2.5 px-4 py-2.5 rounded-lg bg-accent text-white font-mono text-[10px] uppercase tracking-widest hover:bg-accent/90 transition-all shadow-md hover:shadow-[0_4px_14px_rgba(26,107,154,0.3)]"
               >
                 <ExternalLinkIcon /> Live Demo
               </a>

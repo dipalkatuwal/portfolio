@@ -54,7 +54,7 @@ export default function WorksSection() {
               </div>
 
               <p className="border-t border-rule pt-4 text-[12px] leading-[1.65] text-mid">
-                Deep study of foundational CS principles. Built final-year projects merging academic theory with real-world product thinking, specifically in the <strong>FinTech</strong> space.
+                {EDUCATION.note}
               </p>
             </div>
           </div>

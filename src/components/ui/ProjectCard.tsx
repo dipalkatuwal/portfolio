@@ -26,16 +26,16 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className={`group flex flex-col overflow-hidden rounded-[14px] border border-rule bg-white shadow-none transition-all duration-300 hover:-translate-y-[5px] hover:no-underline hover:shadow-[0_18px_44px_rgba(28,28,28,.08)] ${
+      className={`group flex flex-col overflow-hidden rounded-[14px] border border-rule bg-white shadow-none transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[6px] hover:no-underline hover:shadow-[0_20px_48px_rgba(28,28,28,.1)] hover:border-lines ${
         isLarge ? "col-span-full" : ""
       }`}
     >
       {/* Visual banner */}
       <div className={`${project.bgClass} relative flex ${isLarge ? "h-[140px]" : "h-[180px]"} items-center justify-center overflow-hidden`}>
-        <span className="absolute left-3 top-3 rounded-[20px] bg-black/30 px-3 py-1 text-[10px] font-mono tracking-[.06em] text-white/70 backdrop-blur-[4px]">
+        <span className="absolute left-3 top-3 rounded-[20px] bg-black/30 px-3 py-1 text-[10px] font-mono tracking-[.06em] text-white/70 backdrop-blur-[4px] transition-opacity duration-300 group-hover:opacity-90">
           {project.visLabel}
         </span>
-        <span className="relative z-10 text-[34px] font-playfair italic text-white transition-transform duration-300 group-hover:-translate-y-[3px] [text-shadow:0_1px_16px_rgba(28,28,28,.25)]">
+        <span className="relative z-10 text-[34px] font-playfair italic text-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-[4px] group-hover:scale-[1.02] [text-shadow:0_1px_16px_rgba(28,28,28,.25)]">
           {isLarge ? "Portfolio Site" : project.title.split(" ")[0]}
         </span>
         {project.yourehere && (
@@ -58,11 +58,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           View details →
         </span>
         <div className="flex items-center gap-1.5">
-          {project.badge && !(project.badge.toLowerCase().includes("live demo") && !project.isLiveDemo) && (
-            <span className="rounded-[6px] border border-lines bg-white px-2.5 py-1 text-[10px] font-mono text-muted hover:bg-lines/30 hover:border-rule">
-              {project.badge}
-            </span>
-          )}
+          
           {project.github && (
             <div
               onClick={(e) => {
@@ -75,14 +71,14 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               <GitHubIcon /> Source
             </div>
           )}
-          {project.isLiveDemo && project.liveDemo && (
+          {project.liveDemo && (
             <div
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 window.open(project.liveDemo, "_blank", "noopener,noreferrer");
               }}
-              className="flex items-center gap-1.5 rounded-[6px] bg-accent px-2.5 py-1 text-[10px] font-mono text-white transition-all duration-150 hover:bg-accent/90 shadow-sm"
+              className="flex items-center gap-1.5 rounded-[6px] bg-accent px-2.5 py-1 text-[10px] font-mono text-white transition-all duration-200 hover:bg-accent/90 shadow-sm hover:shadow-[0_2px_8px_rgba(26,107,154,0.25)]"
             >
               <ExternalLinkIcon /> Live
             </div>

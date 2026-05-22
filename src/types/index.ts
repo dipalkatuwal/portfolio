@@ -8,9 +8,8 @@ export interface Project {
   tags: string[];
   github?: string;
   liveDemo?: string;
-  isLiveDemo: boolean;
   bgClass: string;
-  badge?: string;
+  
   visLabel: string;
   yourehere?: boolean;
 

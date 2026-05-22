@@ -5,7 +5,7 @@ import { useScrollReveal } from "@/lib/useScrollReveal";
 import {
   Code2, FileCode2, Database, Layout, Activity, Atom, Server, Cpu, Globe,
   Brain, Layers, RefreshCcw, LineChart, Table, Grid3x3, Webhook, Lock,
-  ShieldCheck, GitBranch, Triangle, Container, Repeat, Wind, Component,
+  ShieldCheck, GitBranch, Play, Container, Repeat, Wind, Component,
   Move, Square, Terminal
 } from "lucide-react";
 
@@ -33,7 +33,7 @@ const iconMap: Record<string, any> = {
   "JWT": Lock,
   "Zod": ShieldCheck,
   "Git": GitBranch,
-  "Vercel": Triangle,
+  "Vercel": Play,
   "Docker": Container,
   "CI/CD": Repeat,
   "Tailwind CSS": Wind,
