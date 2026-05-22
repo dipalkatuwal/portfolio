@@ -183,6 +183,7 @@ export default function HeroSection() {
             </div>
 
             <div className="pt-2 w-full flex justify-center">
+              {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
               <a
                 href="/#projects"
                 className="inline-flex items-center justify-center gap-2 w-max px-5 py-2.5 bg-accent text-white rounded-lg text-[11px] font-mono font-bold tracking-wider hover:bg-accent/95 active:scale-[0.98] transition-all"
