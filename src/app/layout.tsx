@@ -299,6 +299,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${playfair.variable} ${courierPrime.variable} ${shareTechMono.variable} ${vt323.variable}`}
     >
       <head>

@@ -130,10 +130,15 @@ a:hover { color: #1c1c1c; }
   background: repeating-linear-gradient(45deg, rgba(255,255,255,.03) 0, rgba(255,255,255,.03) 1px, transparent 1px, transparent 16px);
 }
 
-.bg-nextjs {
-  background: linear-gradient(135deg, #1a3a4a 0%, #1a6b9a 100%);
+.bg-nepalisaga {
+  background: linear-gradient(135deg, #1A1208 0%, #3D3326 55%, #B5281E 100%);
+  position: relative;
 }
-
-.bg-portfolio {
-  background: linear-gradient(135deg, #2e2a26 0%, #1c1c1c 100%);
+.bg-nepalisaga::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0, rgba(255,255,255,.03) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0, rgba(255,255,255,.03) 1px, transparent 1px, transparent 20px);
 }

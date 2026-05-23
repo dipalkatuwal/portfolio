@@ -103,37 +103,38 @@ export const PROJECTS = [
     archTags: ["Time-Series", "LSTM", "MinMax Scaling", "Model Serialization", "Loss Visualization", "Test Set Evaluation"]
   },
   {
-    key: "nextjs",
-    slug: "sanatho",
-    title: "Sangatho",
-    sub: "Next.js · React · Tailwind CSS · App Router",
-    desc: "A hands-on exploration of the Next.js ecosystem — App Router, server components, API routes, and modern React patterns.",
+    key: "nepalisaga",
+    slug: "nepali-saga",
+    title: "NepaliSaga",
+    sub: "Next.js 15 · TypeScript · Tailwind CSS · App Router",
+    desc: "A production-grade Nepali digital news portal with a smart scroll-aware header, live financial widgets, and a premium editorial experience built for real media business use.",
     details: [
-      "Progressive exploration of the App Router paradigm: layouts, loading states, error boundaries",
-      "Server and Client Component patterns with practical data-fetching examples",
-      "API routes and server actions used to build small full-stack features inside Next.js",
-      "Deployed to Vercel; used as a sandbox to test patterns before bringing them to production",
+      "Scroll-aware sticky header with hysteresis logic — collapses on scroll, smoothly expands near the footer with tuned cubic-bezier transitions",
+      "Live financial widgets for NEPSE ticker, Forex rates, Bullion prices, and Markets data table — purpose-built for Nepali readers",
+      "Dynamic article routing with Next.js App Router, custom 404 page, reading progress bar, and skeleton loading states",
+      "Component-driven architecture with custom hooks (useScrollAware, useReadingProgress, useNEPSE) cleanly separating logic from UI",
     ],
-    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "App Router", "Server Components"],
-    github: "https://github.com/dipalkatuwal/Nextjslearning",
-    liveDemo: "https://sangatho.vercel.app",
-    bgClass: "bg-nextjs",
-    visLabel: "04 / Sangatho",
-    overview: "A production-quality financial dashboard application built by completing the official Next.js App Router course curriculum. This project demonstrates deep proficiency with Next.js 15's modern patterns.",
-    problemSolved: "While labeled a learning project, this codebase is 99.1% TypeScript with strict configuration, auth middleware, database integration, and live deployment — reflecting production-grade technical rigor.",
+    tags: ["Next.js 15", "TypeScript", "Tailwind CSS", "App Router", "Lucide React", "Vercel"],
+    github: "https://github.com/dipalkatuwal/NepaliSaga",
+    liveDemo: "https://nepalisaga.vercel.app/",
+    bgClass: "bg-nepalisaga",
+    badge: "Open Source",
+    visLabel: "04 / NepaliSaga",
+    overview: "NepaliSaga is a production-grade digital news portal built for Nepal's media landscape. It delivers a premium editorial experience combining smart UI interactions, real-time financial data widgets relevant to Nepali readers, and a fully responsive component system — architected as a foundation for a real media business.",
+    problemSolved: "Nepal lacks modern, performant digital news platforms built with current frontend standards. NepaliSaga brings institutional-quality frontend engineering — smooth animations, financial data widgets, and scalable component architecture — to Nepali journalism.",
     features: [
-      { title: "App Router Mastery", description: "Deep use of nested layouts, loading UI, error boundaries, Server and Client component separation in Next.js App Router." },
-      { title: "Authentication Flow", description: "NextAuth.js integrated with session management, middleware protection, and secure credential handling." },
-      { title: "Full-Stack Data", description: "Server-side data fetching with Vercel Postgres, database queries colocated with components, and proper separation of layers." },
-      { title: "Proxy & Config", description: "Custom proxy.ts, strict ESLint configuration, and production-grade configs demonstrating infrastructure awareness." }
+      { title: "Smart Scroll-Aware Header", description: "Sticky header with hysteresis logic that collapses past the masthead and smoothly re-expands near the footer — preventing flicker at scroll thresholds using carefully tuned cubic-bezier curves." },
+      { title: "Financial Widgets Suite", description: "Live NEPSE ticker, Forex exchange rates, Bullion (gold/silver) prices, and a full Markets data table — all purpose-built for the Nepali investor readership." },
+      { title: "Editorial Content System", description: "Hero story layout, story cards with category tags and read time, compact card grid, and a full article view with rich typography and dynamic slug-based routing." },
+      { title: "Engagement Features", description: "Reading progress bar, poll widget, trending sidebar, newsletter signup, ad banner placements, dark mode toggle, and mobile navigation drawer." }
     ],
-    architecture: "Patterns learned here — App Router data fetching, auth middleware, TypeScript strict mode, and Tailwind-based component systems — were directly applied to more complex products.",
-    designSystem: "Standardized dashboard UI using Tailwind CSS for consistent layout, typography, and responsive behavior across all modules.",
+    architecture: "Next.js 15 App Router with nested layouts for consistent header/footer across all pages. Components are separated into layout, home, article, widgets, shared, and navigation concerns. Custom hooks isolate scroll, reading progress, and market data logic. TypeScript interfaces define the data layer for articles, markets, and ads.",
+    designSystem: "Premium editorial aesthetic with a warm off-white base, serif masthead typography, and a red accent system. Tailwind CSS utility classes combined with custom typography styles in a dedicated CSS layer. Smooth Framer-style transitions using native CSS cubic-bezier curves without additional dependencies.",
     languages: [
-      { name: "TypeScript", percentage: 99.1, color: "#e87b6e" },
-      { name: "Other", percentage: 0.9, color: "#8a8a8a" }
+      { name: "TypeScript", percentage: 96.2, color: "#9b89e8" },
+      { name: "CSS", percentage: 3.8, color: "#6ecaa8" }
     ],
-    archTags: ["Server Components", "Route Middleware", "DB Queries", "Session Management", "Streaming UI", "Vercel Deployment"]
+    archTags: ["Next.js 15 App Router", "Server Components", "Dynamic Routes", "Custom Hooks", "Hysteresis Scroll Logic", "ISR-Ready", "Vercel Deployment"]
   },
  
 ];
