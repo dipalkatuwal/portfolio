@@ -168,6 +168,10 @@ const jsonLd = {
     {
       "@type": ["Person", "ProfilePage"],
       "@id": `${BASE_URL}/#person`,
+        mainEntity: {            
+        "@type": "Person",       
+        name: "Dipal Katuwal",   
+      },
       name: "Dipal Katuwal",
       givenName: "Dipal",
       familyName: "Katuwal",
