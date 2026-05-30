@@ -21,9 +21,9 @@ html {
 
 body {
   background-color: #ffffff;
-  color: #1c1c1c;
+  color: #111111;
   font-family: var(--font-share-tech), 'Courier New', monospace;
-  font-size: 14px;
+  font-size: 15.5px;
   line-height: 1.6;
   overflow-x: hidden;
 }
@@ -36,7 +36,7 @@ a {
 /* Scoped to prose/body text only — avoids bleeding into nav/cards */
 .prose-links a:visited { color: #5a5a5a; }
 
-a:hover { color: #1c1c1c; }
+a:hover { color: #111111; }
 
 ::-webkit-scrollbar { width: 3px; background: #eeebe4; }
 ::-webkit-scrollbar-thumb { background: #c8c4bc; }

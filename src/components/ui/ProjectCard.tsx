@@ -48,8 +48,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       {/* Info */}
       <div className="flex-1 p-5">
         <div className="mb-1 text-[20px] font-playfair text-ink">{project.title}</div>
-        <div className="mb-2 font-mono text-[10px] tracking-[.05em] text-ink3">{project.sub}</div>
-        <p className="text-[12px] leading-[1.65] text-mid">{project.desc}</p>
+        <div className="mb-2 font-mono text-[11px] tracking-[.05em] text-ink3">{project.sub}</div>
+        <p className="text-[13.5px] leading-[1.7] text-mid">{project.desc}</p>
       </div>
 
       {/* Footer */}

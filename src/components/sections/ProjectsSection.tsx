@@ -11,15 +11,15 @@ export default function ProjectsSection() {
   const featuredProjects = PROJECTS.slice(0, 5);
 
   return (
-    <section id="projects" className="border-t border-rule" ref={ref}>
+    <section id="projects"  ref={ref}>
       <div className="max-w-[1040px] mx-auto px-6 py-20">
         <div className="flex items-center justify-between mb-3">
-          <p className="rv font-mono text-[10px] font-semibold uppercase tracking-[.12em] text-muted">
+          <p className="rv font-mono text-[13px] font-semibold uppercase tracking-[.2em] text-ink ">
             Projects
           </p>
           <Link
             href="/projects"
-            className="rv font-mono text-[10px] font-semibold uppercase tracking-[.12em] text-accent hover:underline transition-all"
+            className="rv font-mono text-[10px] font-semibold uppercase tracking-[.12em] text-accent hover:underline transition-all flex-shrink-0"
           >
             See all projects →
           </Link>

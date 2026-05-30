@@ -38,36 +38,36 @@ export const PROJECTS = [
     key: "pasal",
     slug: "pasal-bot",
     title: "PasalBot",
-    sub: "MERN · NLP · RBAC · Chat-driven Commerce",
-    desc: "Conversational commerce where you order with words, not forms. No buttons, no dropdowns — just say what you want.",
+    sub: "MERN · Keyword Bot · Chat-driven Commerce",
+    desc: "Conversational commerce built for Nepali social sellers. Customers order by typing — the bot handles product queries, cart, and checkout automatically.",
     details: [
-      "NLP-powered order system that converts conversational input into structured workflows",
-      "Role-based access control across three user types: buyer, seller, and admin",
-      "Entire interface as a chat UI — no forms, no traditional product pages, no checkout flow",
-      "Secure JWT authentication and a backend architecture that scales to multiple concurrent shops",
+      "Keyword-triggered bot engine that matches customer messages and walks through a full multi-step checkout flow",
+      "Public shop page per seller with embedded bot — shareable link, no app download required",
+      "Real-time order dashboard with live updates via BroadcastChannel and 30-second polling",
+      "JWT authentication, atomic order ID generation, and per-shop data isolation across concurrent sellers",
     ],
-    tags: ["MongoDB", "Express.js", "React.js", "Node.js", "NLP", "RBAC", "JWT Auth", "Socket.io"],
+    tags: ["MongoDB", "Express.js", "React.js", "Node.js", "JWT Auth", "BroadcastChannel", "CSS Modules", "Vite"],
     github: "https://github.com/dipalkatuwal/PasalBot",
     liveDemo: "https://pasalbot.vercel.app",
     bgClass: "bg-pasal",
     
     visLabel: "02 / PasalBot",
-    overview: "PasalBot (v1.1) is a smart shop assistant frontend application built specifically for Nepali social media sellers operating on Facebook and Instagram. 'Pasal' means shop in Nepali — the app helps informal vendors manage products, track orders, and automate customer conversations through a keyword-driven chat bot, all from a single dashboard.",
-    problemSolved: "Thousands of Nepali entrepreneurs run businesses entirely through social media DMs — manually responding to every inquiry, tracking orders in notebooks, and losing sales to missed messages. PasalBot brings structure and automation to this informal commerce landscape.",
+    overview: "PasalBot is a full-stack shop automation platform built for Nepali sellers operating on Facebook and Instagram. 'Pasal' means shop in Nepali. Sellers get a configurable keyword bot, a shareable public shop URL, and a live dashboard — customers just type what they want and the bot handles the rest.",
+    problemSolved: "Nepali entrepreneurs running businesses through social media DMs manually answer the same questions hundreds of times — price? stock? delivery? — and track orders in notebooks. PasalBot automates the entire conversation, captures every order, and gives sellers a real-time view of their business.",
     features: [
-      { title: "Bot Chat Engine", description: "Keyword-matching chatbot with a full order flow — handles product inquiries, pricing, and order confirmation automatically without the seller's intervention." },
-      { title: "Product Management", description: "Full CRUD interface for managing shop inventory with product cards, forms, and category organization — structured for real Nepali e-commerce patterns." },
-      { title: "Order Tracking", description: "Centralized order management with status rows, formatted NPR currency display, and date tracking — replacing messy notebook-based records." },
-      { title: "Demo Shop Modal", description: "Live preview of the buyer-facing shop experience, letting sellers test how their storefront appears to customers before going live." }
+      { title: "Keyword Bot Engine", description: "Sellers define trigger words and custom replies. The bot matches customer messages, handles product search, cart management, and walks through a full checkout — name, address, phone — without seller intervention." },
+      { title: "Public Shop Page", description: "Every seller gets a unique /shop/slug URL with their full product catalog, category filters, and embedded bot. Customers can browse and order without any app or account." },
+      { title: "Live Order Dashboard", description: "Real-time order pipeline with status tracking (Pending → Confirmed → Delivered → Cancelled), NPR revenue stats, weekly order count, and low-stock alerts." },
+      { title: "6 Themes × 5 Templates", description: "Sellers pick a color theme and shop layout independently. Changes reflect on the public shop instantly via BroadcastChannel without a page reload." }
     ],
-    architecture: "Built with a deliberate separation of concerns. All state lives in ShopContext (useReducer) and UIContext. The entire API layer is isolated — each function is mock-first but annotated for seamless real backend swap-in without touching components.",
-    designSystem: "Focused on mobile-first accessibility for sellers on the go. High-contrast UI elements, simplified navigation, and a chat-driven workflow that minimizes typing and cognitive load.",
+    architecture: "Clean separation between client and server. All shop state lives in ShopContext with useCallback actions and a typed API service layer. The server uses per-shop data isolation with shopId scoping on every query, atomic order ID generation via a counter collection, and an explicit field whitelist on all write endpoints.",
+    designSystem: "Mobile-first UI built for sellers on the go. Chat-driven checkout minimizes typing. High-contrast status badges, NPR currency formatting throughout, and CSS Modules for scoped theming across 6 color palettes.",
     languages: [
       { name: "JavaScript", percentage: 85.4, color: "#c8a96e" },
       { name: "CSS", percentage: 13.8, color: "#6ecaa8" },
       { name: "HTML", percentage: 0.8, color: "#8a8a8a" }
     ],
-    archTags: ["Context API", "useReducer", "CSS Modules", "NPR Utils", "SPA Routing", "Mock Layer"]
+    archTags: ["Context API", "useCallback", "CSS Modules", "NPR Utils", "SPA Routing", "Express REST", "Mongoose", "JWT"]
   },
   {
     key: "prediction",
@@ -141,62 +141,54 @@ export const PROJECTS = [
 
 export const SKILLS = [
   {
-    label: "Languages",
+    label: "Frontend",
+    color: "#378ADD",
     tags: [
-      { name: "TypeScript", type: "core" },
-      { name: "JavaScript (ES6+)", type: "core" },
+      { name: "React / Next.js", type: "highlight" },
+      { name: "TypeScript", type: "highlight" },
+      { name: "Tailwind CSS", type: "highlight" },
+      { name: "JavaScript", type: "core" },
+      { name: "Framer Motion", type: "core" },
+      { name: "Shadcn UI", type: "core" },
+    ],
+  },
+  {
+    label: "Backend & Database",
+    color: "#D85A30",
+    tags: [
+      { name: "Node.js / Express", type: "highlight" },
+      { name: "MongoDB", type: "highlight" },
+      { name: "PostgreSQL", type: "core" },
       { name: "Python", type: "core" },
-      { name: "SQL", type: "core" },
-      { name: "HTML/CSS", type: "core" },
+      { name: "FAST API", type: "core" },
     ],
   },
   {
-    label: "Frameworks",
+    label: "AI / ML",
+    color: "#7F77DD",
     tags: [
-      { name: "Next.js", type: "core" },
-      { name: "React", type: "core" },
-      { name: "Node.js", type: "core" },
-      { name: "Express", type: "core" },
-      { name: "Django REST Framework", type: "core" },
+      { name: "OpenAI API", type: "highlight" },
+      { name: "LLMs / GPT", type: "highlight" },
+      { name: "Prompt Engineering", type: "core" },
+      { name: "TensorFlow", type: "projectwork" },
+      { name: "Keras", type: "projectwork" },
+      { name: "LSTM Neural Networks", type: "projectwork" },
+      { name: "Scikit-learn", type: "projectwork" },
+      { name: "Pandas", type: "projectwork" },
+      { name: "NumPy", type: "projectwork" },
     ],
   },
   {
-    label: "Machine Learning",
+    label: "DevOps & Tooling",
+    color: "#1D9E75",
     tags: [
-      { name: "TensorFlow", type: "shipped" },
-      { name: "Keras", type: "shipped" },
-      { name: "LSTM Neural Networks", type: "shipped" },
-      { name: "Scikit-learn", type: "shipped" },
-      { name: "Pandas", type: "shipped" },
-      { name: "NumPy", type: "shipped" },
-    ],
-  },
-  {
-    label: "Backend & DevOps",
-    tags: [
-      { name: "MongoDB", type: "shipped" },
-      { name: "PostgreSQL", type: "shipped" },
-      { name: "MySQL", type: "shipped" },
-      { name: "REST APIs", type: "shipped" },
-      { name: "JWT", type: "shipped" },
-      { name: "Zod", type: "shipped" },
-      { name: "Git", type: "shipped" },
-      { name: "Vercel", type: "shipped" },
-      { name: "Docker", type: "shipped" },
-      { name: "CI/CD", type: "shipped" },
-    ],
-  },
-  {
-    label: "UI/UX",
-    tags: [
-      { name: "Tailwind CSS", type: "comfortable" },
-      { name: "Shadcn UI", type: "comfortable" },
-      { name: "Framer Motion", type: "comfortable" },
-      { name: "Material UI", type: "comfortable" },
+      { name: "Git", type: "highlight" },
+      { name: "Vercel", type: "highlight" },
+      { name: "Docker", type: "core" },
+      { name: "CI / CD", type: "core" },
     ],
   },
 ];
-
 export const EXPERIENCE = [
   {
     role: "Full Stack Developer",

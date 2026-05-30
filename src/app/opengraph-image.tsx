@@ -154,7 +154,7 @@ export default function OGImage() {
               letterSpacing: "0.05em",
             }}
           >
-            dipalkatuwal.dev
+            dipalkatuwal.com.np
           </div>
           <div
             style={{

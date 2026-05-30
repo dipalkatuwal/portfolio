@@ -3,141 +3,192 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
+const navLinks = [
+  { id: "hero-profile", label: "About",    href: "/#hero-profile" },
+  { id: "skills",       label: "Skills",   href: "/#skills"       },
+  { id: "projects",     label: "Projects", href: "/#projects"     },
+  { id: "works",        label: "Work",     href: "/#works"        },
+  { id: "footer",       label: "Contact",  href: "/#footer"       },
+];
+
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeId,   setActiveId]   = useState("hero-profile");
+  const [scrolled,   setScrolled]   = useState(false);
 
-  // Prevent scrolling when drawer is open
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 30);
+      const nearBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 300;
+      if (nearBottom) { setActiveId("footer"); return; }
+      let current = navLinks[0].id;
+      navLinks.forEach(({ id }) => {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 200) current = id;
+      });
+      setActiveId(current);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
-  const navLinks = [
-    { id: "about", label: "About", href: "/#hero-profile" },
-    { id: "skills", label: "Skills", href: "/#skills" },
-    { id: "projects", label: "Projects", href: "/#projects" },
-    { id: "works", label: "Work", href: "/#works" },
-    { id: "contact", label: "Contact", href: "/#footer" },
-  ];
+  const activeLink = navLinks.find((l) => l.id === activeId);
 
   return (
     <>
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-rule h-[50px] flex items-center">
-        <div className="max-w-[1040px] mx-auto px-6 w-full flex justify-between items-center">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="underline font-playfair italic text-lg text-ink tracking-tight"
-          >
-            Dipal <em className="text-accent">Katuwal.</em>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            <ul className="flex gap-2">
-              {navLinks.map((link) => (
-                <li key={link.id}>
-                  <Link
-                    href={link.href}
-                    className="inline-block px-3 py-1.5 rounded-md font-mono text-[10px] uppercase tracking-widest text-ink3 hover:text-ink hover:bg-lines transition"
-                  >
+      {/* ── Desktop nav (unchanged) ── */}
+      <nav
+        className={`sticky top-0 z-50 hidden md:block transition-all duration-300 ${
+          scrolled ? "bg-white/96 backdrop-blur-lg" : "bg-white"
+        }`}
+        style={{ borderBottom: "1px solid #e4e0d8" }}
+      >
+        <div className="max-w-[1040px] mx-auto px-6 h-14 relative flex items-center justify-between">
+          <Link href="/" className="underline font-playfair italic text-[18px] text-ink leading-none tracking-tight flex-shrink-0">
+  Dipal <em className="text-accent">Katuwal.</em>
+</Link>
+          <div className="absolute left-1/2 -translate-x-1/2 flex items-center">
+            {navLinks.map((link) => {
+              const isActive = activeId === link.id;
+              return (
+                <a key={link.id} href={link.href} className="group relative px-6 h-14 flex items-center">
+                  <span className={`font-mono text-[10px] uppercase tracking-[.18em] transition-colors duration-200 ${
+                    isActive ? "text-ink" : "text-muted group-hover:text-ink3"
+                  }`}>
                     {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                  </span>
+                  <span className={`absolute bottom-0 left-6 right-6 h-[2px] bg-accent transition-all duration-300 ${
+                    isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
+                  }`} style={{ transformOrigin: "left" }} />
+                </a>
+              );
+            })}
           </div>
-
-          {/* Mobile hamburger toggle */}
-          <button
-            onClick={() => setMobileOpen(true)}
-            aria-label="Open Menu"
-            className="md:hidden bg-transparent border border-rule px-2.5 py-1 rounded-lg text-ink3 hover:bg-lines transition-colors"
-          >
-            <span className="font-mono text-[10px] uppercase tracking-widest mr-2">Menu</span>
-            <span className="text-md">☰</span>
-          </button>
+          <div className="flex-shrink-0 invisible font-playfair italic text-[18px]">Dipal Katuwal.</div>
         </div>
       </nav>
 
-      {/* Mobile Drawer Backdrop */}
-      <div
-        className={`fixed inset-0 z-[100] bg-ink/40 backdrop-blur-md transition-opacity duration-500 md:hidden ${mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-          }`}
-        onClick={() => setMobileOpen(false)}
-      />
-
-      {/* Mobile Drawer Content */}
-      <aside
-        className={`fixed top-0 right-0 z-[101] h-full w-[300px] bg-[#fafaf9] shadow-[0_0_80px_rgba(0,0,0,0.15)] transition-all duration-300 md:hidden ${mobileOpen ? "opacity-100 translate-x-0 pointer-events-auto" : "opacity-0 translate-x-4 pointer-events-none"
-          }`}
+      {/* ── Mobile: sticky top bar ── */}
+      <nav
+        className={`sticky top-0 z-50 md:hidden transition-all duration-300 ${
+          scrolled ? "bg-white/96 backdrop-blur-lg" : "bg-white"
+        }`}
+        style={{ borderBottom: "1px solid #e4e0d8" }}
       >
-        {/* Scrollable Container */}
-        <div className="flex flex-col h-full overflow-y-auto overflow-x-hidden custom-scrollbar">
-          {/* Header */}
-          <div className="flex justify-between items-center p-8 sticky top-0 bg-[#fafaf9]/80 backdrop-blur-md z-10">
-            <div className="flex flex-col">
-              <span className="font-mono text-[9px] uppercase tracking-[.3em] text-muted mb-1">Navigation</span>
-              <span className="font-playfair italic text-xl text-ink">Menu.</span>
-            </div>
+        <div className="h-13 px-5 flex items-center justify-between" style={{ height: 52 }}>
+
+          {/* Logo */}
+          <Link href="/" className="underline font-playfair italic text-[17px] text-ink leading-none tracking-tight">
+  Dipal <em className=" text-accent">Katuwal.</em>
+</Link>
+
+          {/* Right side: active section + hamburger */}
+          <div className="flex items-center gap-3">
+            {/* Current section indicator */}
+            <span className="font-mono text-[9px] uppercase tracking-[.18em] text-muted">
+              {activeLink?.label ?? ""}
+            </span>
+
+            {/* Hamburger / close */}
             <button
-              onClick={() => setMobileOpen(false)}
-              className="h-11 w-11 flex items-center justify-center rounded-full border border-rule bg-white text-ink3 hover:text-accent hover:border-accent transition-all duration-300 group"
+              onClick={() => setMobileOpen((v) => !v)}
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
+              className="flex flex-col gap-[5px] p-1 items-end"
             >
-              <span className="transition-transform group-hover:rotate-90">✕</span>
+              <span className={`block h-px bg-ink rounded-sm transition-all duration-300 ease-[cubic-bezier(.22,1,.36,1)] ${
+                mobileOpen ? "w-5 translate-y-[6px] rotate-45" : "w-5"
+              }`} />
+              <span className={`block h-px bg-ink rounded-sm transition-all duration-200 ${
+                mobileOpen ? "w-0 opacity-0" : "w-3.5"
+              }`} />
+              <span className={`block h-px bg-ink rounded-sm transition-all duration-300 ease-[cubic-bezier(.22,1,.36,1)] ${
+                mobileOpen ? "w-5 -translate-y-[6px] -rotate-45" : "w-5"
+              }`} />
             </button>
           </div>
+        </div>
 
-          {/* Links */}
-          <nav className="flex-1 flex flex-col justify-center px-8 py-4 min-h-[300px]">
-            {navLinks.map((link, i) => (
-              <Link
+      </nav>
+
+      {/* ── Mobile: right-side drawer ── */}
+      <div
+        className={`fixed inset-y-0 right-0 z-[60] w-64 bg-white flex flex-col md:hidden transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] ${
+          mobileOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+        style={{ borderLeft: "1px solid #e4e0d8" }}
+      >
+        {/* Drawer header */}
+        <div className="flex items-center justify-between px-5" style={{ height: 52, borderBottom: "1px solid #e4e0d8" }}>
+          <span className="font-mono text-[9px] uppercase tracking-[.18em] text-muted">Menu</span>
+          <button
+            onClick={() => setMobileOpen(false)}
+            aria-label="Close menu"
+            className="flex flex-col gap-[5px] p-1 items-end"
+          >
+            <span className="block w-5 h-px bg-ink rounded-sm transition-all duration-300 ease-[cubic-bezier(.22,1,.36,1)] translate-y-[6px] rotate-45" />
+            <span className="block w-5 h-px bg-ink rounded-sm transition-all duration-300 ease-[cubic-bezier(.22,1,.36,1)] -translate-y-[2px] -rotate-45" />
+          </button>
+        </div>
+
+        {/* Nav links */}
+        <nav className="flex-1 flex flex-col px-5 py-4">
+          {navLinks.map((link, i) => {
+            const isActive = activeId === link.id;
+            return (
+              <a
                 key={link.id}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className={`group flex items-center justify-between py-5 border-b border-rule/60 transition-all duration-300 ${mobileOpen ? "opacity-100" : "opacity-0"
-                  }`}
+                className={`flex items-baseline gap-3 py-3 transition-all duration-500 ${
+                  i < navLinks.length - 1 ? "border-b" : ""
+                } ${mobileOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"}`}
+                style={{
+                  borderColor: "#e4e0d8",
+                  transitionDelay: mobileOpen ? `${80 + i * 50}ms` : "0ms",
+                }}
               >
-                <div className="flex flex-col">
-                  <span className="font-mono text-[8px] text-accent mb-1 opacity-0 group-hover:opacity-100 transition-opacity">0{i + 1}</span>
-                  <span className="font-playfair text-[24px] text-ink3 group-hover:text-ink transition-colors">{link.label}</span>
-                </div>
-                <span className="text-xl text-rule group-hover:text-accent group-hover:translate-x-1 transition-all">→</span>
-              </Link>
-            ))}
-          </nav>
+                <span className="font-mono text-[9px] text-muted/40 tabular-nums">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className={`font-playfair text-[22px] leading-none tracking-tight transition-colors ${
+                  isActive ? "italic text-accent" : "text-ink"
+                }`}>
+                  {link.label}
+                </span>
+              </a>
+            );
+          })}
+        </nav>
 
-
-          {/* Footer */}
-          <div className="mt-auto p-8 border-t border-rule bg-lines/10">
-            <div className="flex flex-col gap-4">
-              <div className="flex gap-4">
-                <a href="https://linkedin.com/in/dipalkatuwal" target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] text-ink3 hover:text-accent transition-colors">LinkedIn</a>
-                <a href="https://github.com/dipalkatuwal" target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] text-ink3 hover:text-accent transition-colors">GitHub</a>
-                <a href="/resume.pdf" target="_blank" className="font-mono text-[10px] text-ink3 hover:text-accent transition-colors">Resume</a>
-              </div>
-              <p className="font-mono text-[9px] text-muted uppercase tracking-[.2em]">
-                © 2026 Dipal Katuwal
-              </p>
-            </div>
-          </div>
+        {/* Social links */}
+        <div
+          className={`px-5 py-5 flex gap-5 transition-all duration-500 ${
+            mobileOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+          }`}
+          style={{ borderTop: "1px solid #e4e0d8", transitionDelay: mobileOpen ? "360ms" : "0ms" }}
+        >
+          <a href="https://github.com/dipalkatuwal"      target="_blank" rel="noopener noreferrer" className="font-mono text-[9px] uppercase tracking-[.14em] text-muted hover:text-accent transition-colors">GitHub</a>
+          <a href="https://linkedin.com/in/dipalkatuwal" target="_blank" rel="noopener noreferrer" className="font-mono text-[9px] uppercase tracking-[.14em] text-muted hover:text-accent transition-colors">LinkedIn</a>
+          <a href="/resume.pdf"                           target="_blank" className="font-mono text-[9px] uppercase tracking-[.14em] text-muted hover:text-accent transition-colors">Resume</a>
         </div>
-      </aside>
+      </div>
 
-      <style jsx global>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #e5e5e5;
-          border-radius: 10px;
-        }
-      `}</style>
+      {/* ── Backdrop ── */}
+      <div
+        className={`fixed inset-0 z-50 md:hidden bg-ink/10 backdrop-blur-[2px] transition-opacity duration-400 ${
+          mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setMobileOpen(false)}
+        aria-hidden="true"
+      />
     </>
   );
 }

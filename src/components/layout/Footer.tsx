@@ -13,14 +13,14 @@ export default function Footer() {
   };
 
   return (
-    <footer id="footer" className="border-t border-rule bg-white py-20 px-6">
+    <footer id="footer" className="bg-white py-20 px-6">
       <div className="max-w-[1040px] mx-auto text-center">
         {/* Contact Section */}
         <div className="mb-20">
           <h2 className="font-playfair italic text-[42px] text-ink mb-6">
             Let&apos;s connect.
           </h2>
-          <p className="font-mono text-[13px] text-muted max-w-[500px] mx-auto leading-relaxed mb-10">
+          <p className="font-mono text-[14.5px] text-muted max-w-[500px] mx-auto leading-relaxed mb-10">
             Build something meaningful together or just a good conversation about tech.
           </p>
 
@@ -28,13 +28,13 @@ export default function Footer() {
             <div className="flex flex-col items-center gap-3">
               <span className="font-mono text-[10px] uppercase tracking-[.2em] text-accent">Reach me →</span>
               <div className="flex items-center gap-4 p-2 pl-6 rounded-full border border-rule bg-lines/5">
-                <span className="font-mono text-[14px] text-ink">{ "dipalkatuwal07@gmail.com" }</span>
+                <span className="font-mono text-[15px] text-ink">{ "dipalkatuwal07@gmail.com" }</span>
                 <button
                   onClick={copyEmail}
                   className={`flex items-center gap-2 rounded-full px-6 py-2.5 text-[11px] uppercase tracking-[.06em] font-mono transition-all duration-300 ${
                     copied 
                       ? "bg-emerald-500 text-white" 
-                      : "bg-ink text-white hover:bg-accent"
+                      : "bg-accent text-white hover:bg-ink"
                   }`}
                 >
                   {copied ? (

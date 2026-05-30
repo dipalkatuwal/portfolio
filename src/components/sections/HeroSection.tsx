@@ -1,5 +1,5 @@
 import Image from "next/image";
-import dipalImage from "@/assets/dipal.jpg";
+import dipalImage from "@/assets/dipal.png";
 
 const socialLinks = [
   {
@@ -35,7 +35,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero-profile"
-      className="relative overflow-hidden border-b border-rule bg-white text-mid min-h-screen lg:min-h-[85vh] flex flex-col justify-between py-12 md:py-20"
+      className="relative overflow-hidden  bg-white text-mid min-h-screen lg:min-h-[85vh] flex flex-col justify-between py-12 md:py-20"
       style={{
         backgroundImage: `linear-gradient(to right, rgba(15,23,42,0.012) 1px, transparent 1px), linear-gradient(to bottom, rgba(15,23,42,0.012) 1px, transparent 1px)`,
         backgroundSize: "40px 40px",
@@ -105,7 +105,7 @@ export default function HeroSection() {
               <h1 className="text-[32px] sm:text-[40px] md:text-[48px] font-bold tracking-tight text-ink leading-[1.14]">
                 Hello, I&apos;m <span className="text-ink">Dipal Katuwal</span>
               </h1>
-              <p className="text-[14px] md:text-[15px] text-mid leading-[1.68] font-normal">
+              <p className="text-[15px] md:text-[16.5px] text-mid leading-[1.72] font-normal">
                 A computer science fellow and full-stack developer dedicated to end-to-end web applications, ML-powered tools, and GenAI-integrated workflows.
               </p>
             </div>
@@ -169,11 +169,11 @@ export default function HeroSection() {
               </svg>
             </div>
 
-            <h3 className="text-[15px] md:text-[17px] font-medium tracking-tight text-ink leading-relaxed">
+            <h3 className="text-[16px] md:text-[18px] font-medium tracking-tight text-ink leading-relaxed">
               Taking ownership of feature lifecycles, collaborating across layers, and engineering clean, modular software systems.
             </h3>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-8 pt-4 w-full border-t border-lines/80 text-[12.5px] leading-relaxed text-mid">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-8 pt-4 w-full border-t border-lines/80 text-[14px] leading-relaxed text-mid">
               <p className="text-center md:text-left animate-fade-up [animation-delay:0.15s] opacity-0 [animation-fill-mode:forwards] bg-neutral-50/40 p-3.5 rounded-lg border border-lines/40 md:bg-transparent md:border-none md:p-0">
                 I&apos;m skilled in systems design, robust backend architectures, database optimization, and simplifying complex software.
               </p>

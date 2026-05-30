@@ -4,7 +4,7 @@ A production-ready Next.js 14 portfolio site converted from a single HTML file.
 
 ## Tech Stack
 
-- **Next.js 14** (App Router)
+- **Next.js 15** (App Router)
 - **TypeScript**
 - **Tailwind CSS**
 - **Google Fonts** (Playfair Display, Courier Prime, Share Tech Mono, VT323)

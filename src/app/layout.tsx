@@ -143,11 +143,7 @@ export const metadata: Metadata = {
     ],
   },
 
-  // Search engine verification — add your codes from Google Search Console & Bing Webmaster
-  verification: {
-    google: "ADD_YOUR_GOOGLE_VERIFICATION_CODE_HERE",
-    // other: { "msvalidate.01": "ADD_YOUR_BING_VERIFICATION_CODE_HERE" },
-  },
+  
 
   // Geo signals help Google understand this is a Nepal-based developer
   other: {
@@ -178,7 +174,7 @@ const jsonLd = {
       url: BASE_URL,
       image: {
         "@type": "ImageObject",
-        url: `${BASE_URL}/dipal-katuwal.jpg`,
+        url: `${BASE_URL}/og-image.png`,
         width: 800,
         height: 800,
         caption: "Dipal Katuwal — Full Stack Developer from Nepal",
