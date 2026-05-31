@@ -74,11 +74,11 @@ export default function HeroSection() {
             <div className="flex flex-col items-center lg:items-start space-y-3 w-full">
               <div className="flex items-center gap-3 flex-wrap justify-center lg:justify-start">
                 <span className="inline-flex rounded border border-[rgba(26,107,154,0.15)] bg-[rgba(26,107,154,0.03)] px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-[.18em] text-accent font-semibold">
-                  Full Stack Developer
+                  Full Stack AI Developer
                 </span>
                 <span className="inline-flex items-center gap-1.5 rounded border border-[rgba(74,222,128,0.25)] bg-[rgba(74,222,128,0.04)] px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-[.12em] text-emerald-600 font-semibold">
                   <span className="avail-dot" style={{ width: 6, height: 6 }} />
-                  Available
+                  Open to Work
                 </span>
               </div>
 
@@ -138,13 +138,13 @@ export default function HeroSection() {
             </div>
 
             {/* Core Display Node */}
-            <div className="absolute right-0 w-[145px] h-[145px] rounded-xl bg-white border border-lines p-1 shadow-[0_12px_28px_rgba(15,23,42,0.04)] group overflow-hidden">
-              <div className="w-full h-full rounded-lg overflow-hidden relative">
-                <Image
-                  src={dipalImage}
-                  alt="Dipal Katuwal Portrait Graphics"
-                  width={145}
-                  height={145}
+            <div className="absolute right-0 w-[170px] h-[170px] rounded-xl bg-white border border-lines p-1 shadow-[0_12px_28px_rgba(15,23,42,0.04)] group overflow-hidden">
+  <div className="w-full h-full rounded-lg overflow-hidden relative">
+    <Image
+      src={dipalImage}
+      alt="Dipal Katuwal Portrait Graphics"
+      width={170}
+      height={170}
                   priority
                   className="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105"
                 />

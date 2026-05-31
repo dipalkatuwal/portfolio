@@ -70,38 +70,41 @@ export const PROJECTS = [
     archTags: ["Context API", "useCallback", "CSS Modules", "NPR Utils", "SPA Routing", "Express REST", "Mongoose", "JWT"]
   },
   {
-    key: "prediction",
-    slug: "nepse-predictor",
-    title: "NEPSE Prediction Portal",
-    sub: "Python · ML · TensorFlow · Data Visualization",
-    desc: "Machine learning models for NEPSE stock price prediction — turning historical market data into actionable forecasts.",
-    details: [
-      "LSTM-based deep learning model trained on historical NEPSE stock data for time-series forecasting",
-      "Feature engineering pipeline: moving averages, RSI, volume-weighted indicators, sector correlation",
-      "Flask backend exposing REST endpoints for predictions; React dashboard with interactive candlestick charts",
-      "Backtesting framework that validates model accuracy against held-out market periods",
-    ],
-    tags: ["Python", "TensorFlow", "Pandas", "NumPy", "Flask", "Chart.js", "LSTM", "Data Visualization"],
-    github: "https://github.com/dipalkatuwal/nepse-prediction-portal",
-    isLiveDemo: false,
-    bgClass: "bg-prediction",
-    visLabel: "03 / NEPSE Prediction",
-    overview: "This machine learning research project applies Long Short-Term Memory (LSTM) neural networks to the problem of predicting closing prices for Nepali Stock Exchange securities. Using real NEPSE historical data, the model learns temporal patterns in market behavior.",
-    problemSolved: "Standard neural networks treat each input independently. LSTMs maintain a 'memory' of past time steps — critical for financial time series where yesterday's price and momentum influence tomorrow's movement.",
-    features: [
-      { title: "Data Collection & Cleaning", description: "Raw NEPSE CSV data ingested, cleaned for missing values, and formatted for time-series processing using Pandas." },
-      { title: "Feature Engineering", description: "Computed moving averages (SMA, EMA) and percentage-change features to give the model richer context beyond raw price data." },
-      { title: "Preprocessing & Scaling", description: "MinMax scaling applied to normalize all inputs to [0,1] range. Sequences of lookback windows created for LSTM input format." },
-      { title: "Model Training & Evaluation", description: "LSTM built and trained via TensorFlow/Keras. Evaluated on held-out test data with prediction vs. actual price visualizations." }
-    ],
-    architecture: "The trained model is serialized and saved as stock_prediction_model.keras, allowing it to be loaded for inference without retraining. This demonstrates understanding of model persistence best practices.",
-    designSystem: "Focus on data visualization clarity. Using Recharts and Matplotlib to present complex model outputs in an intuitive way for human analysis.",
-    languages: [
-      { name: "Python", percentage: 95.0, color: "#1a6b9a" },
-      { name: "Jupyter Notebook", percentage: 5.0, color: "#9b89e8" }
-    ],
-    archTags: ["Time-Series", "LSTM", "MinMax Scaling", "Model Serialization", "Loss Visualization", "Test Set Evaluation"]
-  },
+  key: "prediction",
+  slug: "nepse-predictor",
+  title: "NEPSE Prediction Portal",
+  sub: "Python · FastAPI · TensorFlow · React",
+  desc: "Full-stack stock prediction portal using LSTM deep learning to forecast NEPSE closing prices with interactive visualizations.",
+  details: [
+    "LSTM-based deep learning model trained on historical NEPSE stock data for time-series forecasting",
+    "Recursive multi-step prediction for next-day and 5-day price forecasts with MSE, RMSE, and R² evaluation",
+    "FastAPI backend with JWT authentication, SQLAlchemy ORM, and REST endpoints for predictions",
+    "React dashboard with interactive charts — closing price history, 100/200-day moving averages, and prediction overlays",
+  ],
+  tags: ["Python", "FastAPI", "TensorFlow", "Keras", "Pandas", "NumPy", "React", "Recharts", "JWT", "SQLAlchemy", "LSTM"],
+  github: "https://github.com/dipalkatuwal/nepse-prediction-portal",
+  isLiveDemo: false,
+  bgClass: "bg-prediction",
+  visLabel: "03 / NEPSE Prediction",
+  overview: "A full-stack machine learning application that applies Long Short-Term Memory (LSTM) neural networks to predict closing prices for Nepali Stock Exchange (NEPSE) securities. Built with a FastAPI backend and React frontend, it covers 100+ tickers with real historical market data.",
+  problemSolved: "Standard neural networks treat each input independently. LSTMs maintain a memory of past time steps — critical for financial time series where historical price momentum directly influences future movement.",
+  features: [
+    { title: "Data Collection & Cleaning", description: "Raw NEPSE CSV data ingested, cleaned for missing values, and formatted for time-series processing using Pandas." },
+    { title: "Feature Engineering", description: "100-day and 200-day moving averages computed to give the model richer market context beyond raw closing prices." },
+    { title: "Preprocessing & Scaling", description: "MinMax scaling applied to normalize all inputs to [0,1] range. Sequences of 100-day lookback windows created for LSTM input format." },
+    { title: "Model Training & Evaluation", description: "LSTM built and trained via TensorFlow/Keras. Evaluated on held-out test data with MSE, RMSE, and R² metrics alongside prediction vs. actual price visualizations." },
+    { title: "Multi-Day Forecasting", description: "Recursive prediction strategy feeds each predicted price back into the model to generate 5-day forward price trajectories." },
+    { title: "Secure REST API", description: "FastAPI backend with JWT-based user authentication, protected prediction endpoints, and Matplotlib-generated charts served as static media." },
+  ],
+  architecture: "The trained model is serialized as stock_prediction_model.keras and loaded at inference time without retraining. The FastAPI backend handles auth via python-jose and passlib, persists users with SQLAlchemy on SQLite, and serves all chart images through a mounted static media directory.",
+  designSystem: "Focus on data visualization clarity — Recharts on the frontend for interactive price charts, Matplotlib on the backend for server-rendered prediction overlays and moving average plots.",
+  languages: [
+    { name: "Python", percentage: 60.0, color: "#1a6b9a" },
+    { name: "JavaScript", percentage: 35.0, color: "#f0db4f" },
+    { name: "Jupyter Notebook", percentage: 5.0, color: "#9b89e8" }
+  ],
+  archTags: ["LSTM", "Time-Series", "MinMax Scaling", "Recursive Forecasting", "JWT Auth", "REST API", "Model Serialization", "SQLAlchemy"],
+},
   {
     key: "nepalisaga",
     slug: "nepali-saga",
