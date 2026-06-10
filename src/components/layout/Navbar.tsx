@@ -177,7 +177,6 @@ export default function Navbar() {
         >
           <a href="https://github.com/dipalkatuwal"      target="_blank" rel="noopener noreferrer" className="font-mono text-[9px] uppercase tracking-[.14em] text-muted hover:text-accent transition-colors">GitHub</a>
           <a href="https://linkedin.com/in/dipalkatuwal" target="_blank" rel="noopener noreferrer" className="font-mono text-[9px] uppercase tracking-[.14em] text-muted hover:text-accent transition-colors">LinkedIn</a>
-          <a href="/resume.pdf"                           target="_blank" className="font-mono text-[9px] uppercase tracking-[.14em] text-muted hover:text-accent transition-colors">Resume</a>
         </div>
       </div>
 

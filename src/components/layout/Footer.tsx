@@ -73,7 +73,6 @@ export default function Footer() {
           <div className="flex gap-8">
             <a href="https://github.com/dipalkatuwal" target="_blank" rel="noopener noreferrer" className="font-mono text-[11px] text-ink3 hover:text-accent transition-colors">GitHub</a>
             <a href="https://linkedin.com/in/dipalkatuwal" target="_blank" rel="noopener noreferrer" className="font-mono text-[11px] text-ink3 hover:text-accent transition-colors">LinkedIn</a>
-            <a href="/resume.pdf" target="_blank" className="font-mono text-[11px] text-ink3 hover:text-accent transition-colors">Resume</a>
           </div>
 
           <div className="flex flex-col items-center md:items-end gap-2">

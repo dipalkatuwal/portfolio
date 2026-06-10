@@ -1,5 +1,5 @@
 export const PROJECTS = [
-   {
+  {
     key: "nepse",
     slug: "nepse-sage",
     title: "NepseSage",
@@ -23,16 +23,50 @@ export const PROJECTS = [
       { title: "Clinical Dashboard", description: "Mission control for investors. Tracks real-time portfolio value and P&L, surfaces a proprietary 'Discipline Score', and shows live Portfolio Beta alongside volatility ratings — all in one high-density view." },
       { title: "Sage AI Engine", description: "OpenAI-powered analytical core at /sage-ai. Performs technical analysis for NEPSE symbols (NICA, NTC, etc.) — detecting support/resistance levels, interpreting indicators, and aggregating market sentiment signals." },
       { title: "Behavior Lab & Journal", description: "The trading psychologist at /journal. Logs emotional state during every trade, runs automatic pattern recognition to identify FOMO and Revenge Trading behaviors, and auto-flags 'Red Flag' patterns before they become habits." },
-      { title: "Strategy Simulator", description: "Risk-free environment at /simulator for testing strategies with real NEPSE market data and virtual capital — validate approaches before committing real money." }
+      { title: "Strategy Simulator", description: "Risk-free environment at /simulator for testing strategies with real NEPSE market data and virtual capital — validate approaches before committing real money." },
     ],
     architecture: "Structured as a monorepo with two isolated workspaces: /server (Express.js, controllers, Mongoose models for User/Portfolio/Journal, JWT middleware, node-cron background jobs, OpenAI service integration) and /web-app (Next.js 15 App Router, Shadcn/Radix UI components, AuthContext, custom hooks, Zod schema validation). The backend exposes REST endpoints consumed by the frontend via NEXT_PUBLIC_API_URL.",
     designSystem: "Built around a bespoke 'Clinical Navy' design language: OKLCH-based color tokens for mathematically perfect light/dark transitions, hardware-accelerated micro-interactions via Framer Motion, Recharts for financial data visualization, and a dual-typography system using Space Grotesk (headings/impact) paired with DM Sans (data-dense utility readouts). Styled with Tailwind CSS 4.",
     languages: [
       { name: "TypeScript", percentage: 83.6, color: "#9b89e8" },
       { name: "JavaScript", percentage: 14.7, color: "#c8a96e" },
-      { name: "CSS", percentage: 1.7, color: "#6ecaa8" }
+      { name: "CSS", percentage: 1.7, color: "#6ecaa8" },
     ],
-    archTags: ["Monorepo", "Next.js 15 App Router", "Server Components", "REST API", "JWT + Bcryptjs", "Mongoose ODM", "node-cron Jobs", "OpenAI SDK", "Zod Validation", "OKLCH Color System", "Shadcn UI", "Framer Motion"]
+    archTags: ["Monorepo", "Next.js 15 App Router", "Server Components", "REST API", "JWT + Bcryptjs", "Mongoose ODM", "node-cron Jobs", "OpenAI SDK", "Zod Validation", "OKLCH Color System", "Shadcn UI", "Framer Motion"],
+  },
+  {
+    key: "nepseman",
+    slug: "nepseman-api",
+    title: "nepseman-api",
+    sub: "Python · FastAPI · PostgreSQL · WebSocket · Docker",
+    desc: "Unofficial reverse-engineered REST and WebSocket API for Nepal Stock Exchange market data — built from scratch with zero dependency on any third-party NEPSE library.",
+    details: [
+      "Reverse-engineered NEPSE's WASM-based authentication layer from scratch — salt-based payload signing with wasmtime running NEPSE's own binary",
+      "Fully async end-to-end: FastAPI + httpx + asyncio + asyncpg with SQLAlchemy async ORM and Alembic migrations for PostgreSQL persistence",
+      "WebSocket support for live market data streams, TTL caching (30s live / 10min stable), and per-IP rate limiting via slowapi",
+      "Docker-ready with docker-compose, CSV export on all list endpoints, symbol validation with fuzzy suggestions, and a full test suite",
+    ],
+    tags: ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Alembic", "asyncpg", "httpx", "wasmtime", "WebSocket", "Docker", "slowapi", "Pydantic"],
+    github: "https://github.com/dipalkatuwal/nepseman-api",
+    liveDemo: "https://nepseman-api-production.up.railway.app/docs",
+    bgClass: "bg-nepseman",
+    badge: "Open Source",
+    visLabel: "02 / nepseman-api",
+    overview: "nepseman-api is a production-grade async REST and WebSocket API that reverse-engineers nepalstock.com.np's authentication system — including its WASM-based token obfuscation and salt-based payload signing — to serve live NEPSE market data with no dependency on any third-party NEPSE library.",
+    problemSolved: "Nepal Stock Exchange has no public API. Existing npm/pip packages rely on brittle scraping and break silently when NEPSE rotates its auth tokens. nepseman-api solves this by reimplementing the authentication layer from scratch using NEPSE's own WASM binary, making it robust to token rotation by design.",
+    features: [
+      { title: "WASM Auth Engine", description: "Reverse-engineered NEPSE's WASM-based token obfuscation using wasmtime. Implements the full salt-based payload signing algorithm from scratch — no third-party NEPSE dependency anywhere in the codebase." },
+      { title: "Full Market Coverage", description: "Endpoints for live prices, top gainers/losers/turnover, market summary, supply-demand, NEPSE index and sub-indices, index graphs, securities list, OHLCV history, market depth, floorsheet, and bulk parallel OHLCV fetching." },
+      { title: "PostgreSQL Persistence", description: "Every price fetch auto-saved via SQLAlchemy async ORM. Queryable snapshots with pagination, symbol filtering, and date filtering. Schema versioned with Alembic migrations." },
+      { title: "WebSocket Live Stream", description: "Connect to /ws and subscribe to live market data channels with configurable polling intervals. Supports subscribe, unsubscribe, and on-demand route calls." },
+    ],
+    architecture: "Core auth logic lives in app/core/auth.py — WASM token parser and payload calculator. An async authenticated httpx session handles all outbound requests. Services layer caches results with a TTL decorator. PostgreSQL persistence is handled via async SQLAlchemy with a repository pattern. Routes are split by domain: market, prices, indices, securities, floorsheet, and WebSocket.",
+    designSystem: "API-only service. Documentation auto-generated via FastAPI's OpenAPI integration at /docs.",
+    languages: [
+      { name: "Python", percentage: 98.9, color: "#1a6b9a" },
+      { name: "Other", percentage: 1.1, color: "#8a8a8a" },
+    ],
+    archTags: ["Async FastAPI", "WASM Auth", "asyncpg", "SQLAlchemy Async", "Alembic", "Repository Pattern", "TTL Cache", "Rate Limiting", "WebSocket", "Docker Compose"],
   },
   {
     key: "pasal",
@@ -50,61 +84,24 @@ export const PROJECTS = [
     github: "https://github.com/dipalkatuwal/PasalBot",
     liveDemo: "https://pasalbot.vercel.app",
     bgClass: "bg-pasal",
-    
-    visLabel: "02 / PasalBot",
+    visLabel: "03 / PasalBot",
     overview: "PasalBot is a full-stack shop automation platform built for Nepali sellers operating on Facebook and Instagram. 'Pasal' means shop in Nepali. Sellers get a configurable keyword bot, a shareable public shop URL, and a live dashboard — customers just type what they want and the bot handles the rest.",
     problemSolved: "Nepali entrepreneurs running businesses through social media DMs manually answer the same questions hundreds of times — price? stock? delivery? — and track orders in notebooks. PasalBot automates the entire conversation, captures every order, and gives sellers a real-time view of their business.",
     features: [
       { title: "Keyword Bot Engine", description: "Sellers define trigger words and custom replies. The bot matches customer messages, handles product search, cart management, and walks through a full checkout — name, address, phone — without seller intervention." },
       { title: "Public Shop Page", description: "Every seller gets a unique /shop/slug URL with their full product catalog, category filters, and embedded bot. Customers can browse and order without any app or account." },
       { title: "Live Order Dashboard", description: "Real-time order pipeline with status tracking (Pending → Confirmed → Delivered → Cancelled), NPR revenue stats, weekly order count, and low-stock alerts." },
-      { title: "6 Themes × 5 Templates", description: "Sellers pick a color theme and shop layout independently. Changes reflect on the public shop instantly via BroadcastChannel without a page reload." }
+      { title: "6 Themes × 5 Templates", description: "Sellers pick a color theme and shop layout independently. Changes reflect on the public shop instantly via BroadcastChannel without a page reload." },
     ],
     architecture: "Clean separation between client and server. All shop state lives in ShopContext with useCallback actions and a typed API service layer. The server uses per-shop data isolation with shopId scoping on every query, atomic order ID generation via a counter collection, and an explicit field whitelist on all write endpoints.",
     designSystem: "Mobile-first UI built for sellers on the go. Chat-driven checkout minimizes typing. High-contrast status badges, NPR currency formatting throughout, and CSS Modules for scoped theming across 6 color palettes.",
     languages: [
       { name: "JavaScript", percentage: 85.4, color: "#c8a96e" },
       { name: "CSS", percentage: 13.8, color: "#6ecaa8" },
-      { name: "HTML", percentage: 0.8, color: "#8a8a8a" }
+      { name: "HTML", percentage: 0.8, color: "#8a8a8a" },
     ],
-    archTags: ["Context API", "useCallback", "CSS Modules", "NPR Utils", "SPA Routing", "Express REST", "Mongoose", "JWT"]
+    archTags: ["Context API", "useCallback", "CSS Modules", "NPR Utils", "SPA Routing", "Express REST", "Mongoose", "JWT"],
   },
-  {
-  key: "prediction",
-  slug: "nepse-predictor",
-  title: "NEPSE Prediction Portal",
-  sub: "Python · FastAPI · TensorFlow · React",
-  desc: "Full-stack stock prediction portal using LSTM deep learning to forecast NEPSE closing prices with interactive visualizations.",
-  details: [
-    "LSTM-based deep learning model trained on historical NEPSE stock data for time-series forecasting",
-    "Recursive multi-step prediction for next-day and 5-day price forecasts with MSE, RMSE, and R² evaluation",
-    "FastAPI backend with JWT authentication, SQLAlchemy ORM, and REST endpoints for predictions",
-    "React dashboard with interactive charts — closing price history, 100/200-day moving averages, and prediction overlays",
-  ],
-  tags: ["Python", "FastAPI", "TensorFlow", "Keras", "Pandas", "NumPy", "React", "Recharts", "JWT", "SQLAlchemy", "LSTM"],
-  github: "https://github.com/dipalkatuwal/nepse-prediction-portal",
-  isLiveDemo: false,
-  bgClass: "bg-prediction",
-  visLabel: "03 / NEPSE Prediction",
-  overview: "A full-stack machine learning application that applies Long Short-Term Memory (LSTM) neural networks to predict closing prices for Nepali Stock Exchange (NEPSE) securities. Built with a FastAPI backend and React frontend, it covers 100+ tickers with real historical market data.",
-  problemSolved: "Standard neural networks treat each input independently. LSTMs maintain a memory of past time steps — critical for financial time series where historical price momentum directly influences future movement.",
-  features: [
-    { title: "Data Collection & Cleaning", description: "Raw NEPSE CSV data ingested, cleaned for missing values, and formatted for time-series processing using Pandas." },
-    { title: "Feature Engineering", description: "100-day and 200-day moving averages computed to give the model richer market context beyond raw closing prices." },
-    { title: "Preprocessing & Scaling", description: "MinMax scaling applied to normalize all inputs to [0,1] range. Sequences of 100-day lookback windows created for LSTM input format." },
-    { title: "Model Training & Evaluation", description: "LSTM built and trained via TensorFlow/Keras. Evaluated on held-out test data with MSE, RMSE, and R² metrics alongside prediction vs. actual price visualizations." },
-    { title: "Multi-Day Forecasting", description: "Recursive prediction strategy feeds each predicted price back into the model to generate 5-day forward price trajectories." },
-    { title: "Secure REST API", description: "FastAPI backend with JWT-based user authentication, protected prediction endpoints, and Matplotlib-generated charts served as static media." },
-  ],
-  architecture: "The trained model is serialized as stock_prediction_model.keras and loaded at inference time without retraining. The FastAPI backend handles auth via python-jose and passlib, persists users with SQLAlchemy on SQLite, and serves all chart images through a mounted static media directory.",
-  designSystem: "Focus on data visualization clarity — Recharts on the frontend for interactive price charts, Matplotlib on the backend for server-rendered prediction overlays and moving average plots.",
-  languages: [
-    { name: "Python", percentage: 60.0, color: "#1a6b9a" },
-    { name: "JavaScript", percentage: 35.0, color: "#f0db4f" },
-    { name: "Jupyter Notebook", percentage: 5.0, color: "#9b89e8" }
-  ],
-  archTags: ["LSTM", "Time-Series", "MinMax Scaling", "Recursive Forecasting", "JWT Auth", "REST API", "Model Serialization", "SQLAlchemy"],
-},
   {
     key: "nepalisaga",
     slug: "nepali-saga",
@@ -129,17 +126,52 @@ export const PROJECTS = [
       { title: "Smart Scroll-Aware Header", description: "Sticky header with hysteresis logic that collapses past the masthead and smoothly re-expands near the footer — preventing flicker at scroll thresholds using carefully tuned cubic-bezier curves." },
       { title: "Financial Widgets Suite", description: "Live NEPSE ticker, Forex exchange rates, Bullion (gold/silver) prices, and a full Markets data table — all purpose-built for the Nepali investor readership." },
       { title: "Editorial Content System", description: "Hero story layout, story cards with category tags and read time, compact card grid, and a full article view with rich typography and dynamic slug-based routing." },
-      { title: "Engagement Features", description: "Reading progress bar, poll widget, trending sidebar, newsletter signup, ad banner placements, dark mode toggle, and mobile navigation drawer." }
+      { title: "Engagement Features", description: "Reading progress bar, poll widget, trending sidebar, newsletter signup, ad banner placements, dark mode toggle, and mobile navigation drawer." },
     ],
     architecture: "Next.js 15 App Router with nested layouts for consistent header/footer across all pages. Components are separated into layout, home, article, widgets, shared, and navigation concerns. Custom hooks isolate scroll, reading progress, and market data logic. TypeScript interfaces define the data layer for articles, markets, and ads.",
     designSystem: "Premium editorial aesthetic with a warm off-white base, serif masthead typography, and a red accent system. Tailwind CSS utility classes combined with custom typography styles in a dedicated CSS layer. Smooth Framer-style transitions using native CSS cubic-bezier curves without additional dependencies.",
     languages: [
       { name: "TypeScript", percentage: 96.2, color: "#9b89e8" },
-      { name: "CSS", percentage: 3.8, color: "#6ecaa8" }
+      { name: "CSS", percentage: 3.8, color: "#6ecaa8" },
     ],
-    archTags: ["Next.js 15 App Router", "Server Components", "Dynamic Routes", "Custom Hooks", "Hysteresis Scroll Logic", "ISR-Ready", "Vercel Deployment"]
+    archTags: ["Next.js 15 App Router", "Server Components", "Dynamic Routes", "Custom Hooks", "Hysteresis Scroll Logic", "ISR-Ready", "Vercel Deployment"],
   },
- 
+  {
+    key: "prediction",
+    slug: "nepal-stock-prediction-lstm",
+    title: "Nepal Stock Prediction LSTM",
+    sub: "Python · FastAPI · TensorFlow · React",
+    desc: "Full-stack stock prediction portal using LSTM deep learning to forecast NEPSE closing prices with interactive visualizations.",
+    details: [
+      "LSTM-based deep learning model trained on historical NEPSE stock data for time-series forecasting across 100+ tickers",
+      "Recursive multi-step prediction for next-day and 5-day price forecasts with MSE, RMSE, and R² evaluation metrics",
+      "FastAPI backend with JWT authentication and REST endpoints serving Matplotlib-generated prediction charts as static media",
+      "React dashboard with interactive charts — closing price history, 100/200-day moving averages, and prediction overlays",
+    ],
+    tags: ["Python", "FastAPI", "TensorFlow", "Keras", "Pandas", "NumPy", "React", "Recharts", "JWT", "LSTM", "Scikit-learn", "Matplotlib"],
+    github: "https://github.com/dipalkatuwal/nepal-stock-prediction-lstm",
+    isLiveDemo: false,
+    bgClass: "bg-prediction",
+    visLabel: "05 / Nepal Stock Prediction",
+    overview: "A full-stack machine learning application that applies Long Short-Term Memory (LSTM) neural networks to predict closing prices for Nepal Stock Exchange (NEPSE) securities. Built with a FastAPI backend and React frontend, it covers 100+ tickers with real historical market data.",
+    problemSolved: "Standard neural networks treat each input independently. LSTMs maintain a memory of past time steps — critical for financial time series where historical price momentum directly influences future movement.",
+    features: [
+      { title: "Data Collection & Cleaning", description: "Raw NEPSE CSV data ingested, cleaned for missing values, and formatted for time-series processing using Pandas." },
+      { title: "Feature Engineering", description: "100-day and 200-day moving averages computed to give the model richer market context beyond raw closing prices." },
+      { title: "Preprocessing & Scaling", description: "MinMax scaling applied to normalize all inputs to [0,1] range. Sequences of 100-day lookback windows created for LSTM input format." },
+      { title: "Model Training & Evaluation", description: "LSTM built and trained via TensorFlow/Keras. Evaluated on held-out test data with MSE, RMSE, and R² metrics alongside prediction vs. actual price visualizations." },
+      { title: "Multi-Day Forecasting", description: "Recursive prediction strategy feeds each predicted price back into the model to generate 5-day forward price trajectories." },
+      { title: "Secure REST API", description: "FastAPI backend with JWT-based user authentication, protected prediction endpoints, and Matplotlib-generated charts served as static media." },
+    ],
+    architecture: "The trained model is serialized as stock_prediction_model.keras and loaded at inference time without retraining. The FastAPI backend handles auth via python-jose and passlib, and serves all chart images through a mounted static media directory. React frontend consumes the API and renders interactive Recharts visualizations.",
+    designSystem: "Focus on data visualization clarity — Recharts on the frontend for interactive price charts, Matplotlib on the backend for server-rendered prediction overlays and moving average plots.",
+    languages: [
+      { name: "Python", percentage: 60.0, color: "#1a6b9a" },
+      { name: "JavaScript", percentage: 35.0, color: "#f0db4f" },
+      { name: "Jupyter Notebook", percentage: 5.0, color: "#9b89e8" },
+    ],
+    archTags: ["LSTM", "Time-Series", "MinMax Scaling", "Recursive Forecasting", "JWT Auth", "REST API", "Model Serialization", "FastAPI", "React"],
+  },
 ];
 
 export const SKILLS = [
@@ -150,9 +182,9 @@ export const SKILLS = [
       { name: "React / Next.js", type: "highlight" },
       { name: "TypeScript", type: "highlight" },
       { name: "Tailwind CSS", type: "highlight" },
-      { name: "JavaScript", type: "core" },
-      { name: "Framer Motion", type: "core" },
-      { name: "Shadcn UI", type: "core" },
+      { name: "JavaScript", type: "highlight" },
+      
+      { name: "Shadcn UI", type: "highlight" },
     ],
   },
   {
@@ -161,9 +193,9 @@ export const SKILLS = [
     tags: [
       { name: "Node.js / Express", type: "highlight" },
       { name: "MongoDB", type: "highlight" },
-      { name: "PostgreSQL", type: "core" },
-      { name: "Python", type: "core" },
-      { name: "FAST API", type: "core" },
+      { name: "PostgreSQL", type: "highlight" },
+      { name: "Python", type: "highlight" },
+      { name: "FastAPI", type: "highlight" },
     ],
   },
   {
@@ -187,11 +219,12 @@ export const SKILLS = [
     tags: [
       { name: "Git", type: "highlight" },
       { name: "Vercel", type: "highlight" },
-      { name: "Docker", type: "core" },
-      { name: "CI / CD", type: "core" },
+      { name: "Docker", type: "highlight" },
+      { name: "CI / CD", type: "highlight" },
     ],
   },
 ];
+
 export const EXPERIENCE = [
   {
     role: "Full Stack Developer",
@@ -200,7 +233,8 @@ export const EXPERIENCE = [
     bullets: [
       "Designed and shipped NepseSage — a full MERN platform combining a real-time NEPSE data pipeline with a conversational AI layer for retail investors",
       "Built PasalBot — a chat-first commerce platform with NLP order parsing, RBAC for three user roles, and Socket.io for live order updates",
-      "Developed the NEPSE Prediction Portal: Python data pipeline, LSTM model training, Flask API, and a React dashboard with interactive charts",
+      "Developed nepseman-api — a production-grade async FastAPI service that reverse-engineers NEPSE's WASM-based auth system with PostgreSQL persistence, WebSocket support, and Docker deployment",
+      "Built Nepal Stock Prediction LSTM — a full-stack ML application with a FastAPI backend, LSTM model for 5-day price forecasting, and a React dashboard with interactive charts",
     ],
   },
   {
@@ -216,7 +250,7 @@ export const EXPERIENCE = [
 
 export const EDUCATION = {
   degree: "B.Sc. in Computer Science and Information Technology (B.Sc. CSIT)",
-  institution: "Mahendra Morang Adarsha Multiple Campus,TU,Biratnagar,Nepal",
+  institution: "Mahendra Morang Adarsha Multiple Campus, TU, Biratnagar, Nepal",
   years: "2021 – 2026",
   core: ["Distributed Computing", "Data Structure & Algorithms", "Artificial Intelligence", "Databases", "OS", "Networking", "Software Engineering"],
   note: "Deep study of foundational CS principles. Built final-year projects merging academic theory with real-world product thinking, specifically in the FinTech space.",
